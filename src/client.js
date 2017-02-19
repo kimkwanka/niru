@@ -1,0 +1,12 @@
+/* global document */
+/* eslint-disable react/jsx-filename-extension */
+
+import React from 'react';
+import { render } from 'react-dom';
+import { Router, browserHistory/* hashHistory */ } from 'react-router';
+
+import routes from './modules/routes';
+
+render(
+  <Router routes={routes} history={browserHistory} />,
+document.getElementById('app'));
