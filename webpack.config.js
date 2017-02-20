@@ -9,10 +9,10 @@ const APP_DIR = path.resolve(__dirname, 'src/');
 
 const configClient = {
   name: 'client',
-  entry: [ path.join(APP_DIR, 'client.js') ],
+  entry: [ path.join(APP_DIR, 'client.js') , 'webpack-hot-middleware/client', 'webpack/hot/dev-server'],
   devtool: debug ? 'inline-sourcemap' : null,
   output: {
-    path: CLIENT_BUILD_DIR,
+    path: '/', //CLIENT_BUILD_DIR,
     filename: 'bundle.js',
     publicPath: '/',
   },
@@ -21,11 +21,13 @@ const configClient = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',        
+        loaders: ['react-hot-loader','babel-loader'],    
       },
     ],
   },
-  plugins: debug ? [] : [
+  plugins: debug ? [
+    new webpack.HotModuleReplacementPlugin()
+  ] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),

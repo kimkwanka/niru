@@ -11,8 +11,11 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
+webpackDevHelper = require('./index.dev.js');
+webpackDevHelper.useWebpackMiddleware(app);
+
 // Serve static assets
-app.use(express.static(path.join(__dirname, '../public')));
+//app.use(express.static(path.join(__dirname, '../public')));
 
 // Render server-side React + React-Routes
 app.use(serverRenderer());
