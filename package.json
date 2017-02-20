@@ -5,10 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --content-base public --history-api-fallback --inline --hot",
     "backend": "npm run build && node server.bundle.js",
-    "build:client": "webpack",
-    "build:server": "webpack --config webpack.server.config.js",
-    "build": "npm run build:client && npm run build:server"
-
+    "build": "webpack"
   },
   "license": "MIT",
   "devDependencies": {
