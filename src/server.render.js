@@ -15,7 +15,7 @@ const renderPage = appHtml => (
     <script src="/bundle.js"></script>
    `);
 
-function serverRenderer() {
+export default function serverRenderer() {
   return (req, res, next) => {
     match({ routes, location: req.url }, (err, redirect, props) => {
       // in here we can make some decisions all at once
@@ -36,8 +36,4 @@ function serverRenderer() {
       }
     });    
   }
-};
-
-module.exports = {
-  serverRenderer,
 };

@@ -9,7 +9,7 @@ const APP_DIR = path.resolve(__dirname, 'src/');
 
 const configClient = {
   name: 'client',
-  entry: path.join(APP_DIR, 'client.js'),
+  entry: [ path.join(APP_DIR, 'client.js') ],
   devtool: debug ? 'inline-sourcemap' : null,
   output: {
     path: CLIENT_BUILD_DIR,
@@ -21,20 +21,17 @@ const configClient = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
+        loader: 'babel-loader',        
       },
     ],
   },
-  plugins: debug ? [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),    
-    ] : [
+  plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
   ],
 };
-
+/*
 const configServer = {
   name: 'server',
   entry: path.join(APP_DIR, 'server.render.js'),
@@ -66,6 +63,6 @@ const configServer = {
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' },
     ],
   },
-};
+};*/
 
-module.exports = [configClient, configServer];
+module.exports = [configClient];

@@ -1,5 +1,9 @@
 /* eslint-disable react/jsx-filename-extension */
-const serverRenderer = require('../srender.bundle.js').serverRenderer;
+require('babel-register')({
+   presets: [ 'es2015', 'react' ]
+});
+const serverRenderer = require('./server.render.js').default;
+
 const express = require('express');
 const path = require('path');
 

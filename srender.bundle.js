@@ -64,7 +64,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -77,10 +77,44 @@ module.exports = require("react");
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router");
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-transform-hmr");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router");
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94,21 +128,21 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouter = __webpack_require__(1);
+var _reactRouter = __webpack_require__(3);
 
-var _app = __webpack_require__(6);
+var _app = __webpack_require__(8);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _about = __webpack_require__(5);
+var _about = __webpack_require__(7);
 
 var _about2 = _interopRequireDefault(_about);
 
-var _contact = __webpack_require__(7);
+var _contact = __webpack_require__(9);
 
 var _contact2 = _interopRequireDefault(_contact);
 
-var _home = __webpack_require__(8);
+var _home = __webpack_require__(10);
 
 var _home2 = _interopRequireDefault(_home);
 
@@ -127,33 +161,37 @@ var routes = _react2.default.createElement(
 exports.default = routes;
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _react2 = __webpack_require__(0);
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _reactTransformHmr3 = __webpack_require__(2);
+
+var _reactTransformHmr4 = _interopRequireDefault(_reactTransformHmr3);
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -161,11 +199,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable react/jsx-filename-extension */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  About: {
+    displayName: 'About'
+  }
+};
+
+var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
+  filename: '/Users/strega/dev/niru/src/modules/about.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _reactTransformHmr2(Component, id);
+  };
+} /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/prefer-stateless-function */
 
 
-var About = function (_React$Component) {
+var About = _wrapComponent('About')(function (_React$Component) {
   _inherits(About, _React$Component);
 
   function About() {
@@ -177,10 +234,10 @@ var About = function (_React$Component) {
   _createClass(About, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return _react3.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
+        _react3.default.createElement(
           'h1',
           null,
           'About'
@@ -190,28 +247,33 @@ var About = function (_React$Component) {
   }]);
 
   return About;
-}(_react2.default.Component);
+}(_react3.default.Component));
 
 exports.default = About;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _react2 = __webpack_require__(0);
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _reactTransformHmr3 = __webpack_require__(2);
+
+var _reactTransformHmr4 = _interopRequireDefault(_reactTransformHmr3);
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouter = __webpack_require__(1);
+var _reactRouter = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -219,11 +281,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable react/jsx-filename-extension */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  App: {
+    displayName: 'App'
+  }
+};
+
+var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
+  filename: '/Users/strega/dev/niru/src/modules/app.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _reactTransformHmr2(Component, id);
+  };
+} /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/prefer-stateless-function */
 
 
-var App = function (_React$Component) {
+var App = _wrapComponent('App')(function (_React$Component) {
   _inherits(App, _React$Component);
 
   function App() {
@@ -235,48 +316,48 @@ var App = function (_React$Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return _react3.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
+        _react3.default.createElement(
           'h1',
           null,
           'Index'
         ),
-        _react2.default.createElement(
+        _react3.default.createElement(
           'ul',
           { role: 'navigation' },
-          _react2.default.createElement(
+          _react3.default.createElement(
             'li',
             null,
-            _react2.default.createElement(
+            _react3.default.createElement(
               _reactRouter.IndexLink,
               { to: '/', activeStyle: { color: 'red' }, activeClassName: 'active' },
               'Home'
             )
           ),
-          _react2.default.createElement(
+          _react3.default.createElement(
             'li',
             null,
-            _react2.default.createElement(
+            _react3.default.createElement(
               _reactRouter.Link,
               { to: '/about', activeStyle: { color: 'red' }, activeClassName: 'active' },
               'About'
             )
           ),
-          _react2.default.createElement(
+          _react3.default.createElement(
             'li',
             null,
-            _react2.default.createElement(
+            _react3.default.createElement(
               _reactRouter.Link,
               { to: '/contact', activeStyle: { color: 'red' }, activeClassName: 'active' },
               'Contact'
             )
           ),
-          _react2.default.createElement(
+          _react3.default.createElement(
             'li',
             null,
-            _react2.default.createElement(
+            _react3.default.createElement(
               _reactRouter.Link,
               { to: '/contact/Abe/Simpson', activeStyle: { color: 'red' }, activeClassName: 'active' },
               'Contact With Param'
@@ -289,33 +370,38 @@ var App = function (_React$Component) {
   }]);
 
   return App;
-}(_react2.default.Component);
+}(_react3.default.Component));
 
 App.propTypes = {
-  children: _react2.default.PropTypes.node
+  children: _react3.default.PropTypes.node
 };
 App.defaultProps = function () {
   return { children: null };
 };
 
 exports.default = App;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _react2 = __webpack_require__(0);
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _reactTransformHmr3 = __webpack_require__(2);
+
+var _reactTransformHmr4 = _interopRequireDefault(_reactTransformHmr3);
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -323,11 +409,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable react/jsx-filename-extension */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  Contact: {
+    displayName: 'Contact'
+  }
+};
+
+var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
+  filename: '/Users/strega/dev/niru/src/modules/contact.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _reactTransformHmr2(Component, id);
+  };
+} /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/prefer-stateless-function */
 
 
-var Contact = function (_React$Component) {
+var Contact = _wrapComponent('Contact')(function (_React$Component) {
   _inherits(Contact, _React$Component);
 
   function Contact() {
@@ -339,20 +444,20 @@ var Contact = function (_React$Component) {
   _createClass(Contact, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return _react3.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
+        _react3.default.createElement(
           'h1',
           null,
           'Contact'
         ),
-        _react2.default.createElement(
+        _react3.default.createElement(
           'h2',
           null,
           this.props.params.firstName
         ),
-        _react2.default.createElement(
+        _react3.default.createElement(
           'h2',
           null,
           this.props.params.lastName
@@ -362,26 +467,31 @@ var Contact = function (_React$Component) {
   }]);
 
   return Contact;
-}(_react2.default.Component);
+}(_react3.default.Component));
 
 exports.default = Contact;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function(module) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _react2 = __webpack_require__(0);
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _reactTransformHmr3 = __webpack_require__(2);
+
+var _reactTransformHmr4 = _interopRequireDefault(_reactTransformHmr3);
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -389,11 +499,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable react/jsx-filename-extension */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  Home: {
+    displayName: 'Home'
+  }
+};
+
+var _reactTransformHmr2 = (0, _reactTransformHmr4.default)({
+  filename: '/Users/strega/dev/niru/src/modules/home.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _reactTransformHmr2(Component, id);
+  };
+} /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/prefer-stateless-function */
 
 
-var Home = function (_React$Component) {
+var Home = _wrapComponent('Home')(function (_React$Component) {
   _inherits(Home, _React$Component);
 
   function Home() {
@@ -405,45 +534,51 @@ var Home = function (_React$Component) {
   _createClass(Home, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
+      return _react3.default.createElement(
         'div',
         null,
-        _react2.default.createElement(
+        _react3.default.createElement(
           'h1',
           null,
-          'Home'
+          'Home sweet asdasd aasdsd    :('
         )
       );
     }
   }]);
 
   return Home;
-}(_react2.default.Component);
+}(_react3.default.Component));
 
 exports.default = Home;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = serverRenderer;
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(4);
+var _server = __webpack_require__(6);
 
-var _reactRouter = __webpack_require__(1);
+var _reactRouter = __webpack_require__(3);
 
-var _routes = __webpack_require__(2);
+var _routes = __webpack_require__(4);
 
 var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var express = __webpack_require__(3);
+var express = __webpack_require__(5);
 
 var renderPage = function renderPage(appHtml) {
   return '<!doctype html>\n    <html>\n    <meta charset=utf-8/>\n    <title>My First React Router App</title>\n    <link rel=stylesheet href=\'https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.min.css\'>\n    <div id=app>' + appHtml + '</div>\n    <script src="/bundle.js"></script>\n   ';
@@ -470,10 +605,6 @@ function serverRenderer() {
       }
     });
   };
-};
-
-module.exports = {
-  serverRenderer: serverRenderer
 };
 
 /***/ })
