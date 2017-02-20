@@ -1,3 +1,4 @@
+module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -63,7 +64,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -95,19 +96,19 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouter = __webpack_require__(1);
 
-var _app = __webpack_require__(7);
+var _app = __webpack_require__(6);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _about = __webpack_require__(6);
+var _about = __webpack_require__(5);
 
 var _about2 = _interopRequireDefault(_about);
 
-var _contact = __webpack_require__(8);
+var _contact = __webpack_require__(7);
 
 var _contact2 = _interopRequireDefault(_contact);
 
-var _home = __webpack_require__(9);
+var _home = __webpack_require__(8);
 
 var _home2 = _interopRequireDefault(_home);
 
@@ -135,16 +136,10 @@ module.exports = require("express");
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -200,7 +195,7 @@ var About = function (_React$Component) {
 exports.default = About;
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -306,7 +301,7 @@ App.defaultProps = function () {
 exports.default = App;
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -372,7 +367,7 @@ var Contact = function (_React$Component) {
 exports.default = Contact;
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -428,17 +423,17 @@ var Home = function (_React$Component) {
 exports.default = Home;
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(__dirname) {
+
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(5);
+var _server = __webpack_require__(4);
 
 var _reactRouter = __webpack_require__(1);
 
@@ -448,67 +443,38 @@ var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable react/jsx-filename-extension */
 var express = __webpack_require__(3);
-var path = __webpack_require__(4);
-
-var app = express();
-
-var PORT = process.env.PORT || 8080;
-
-// Serve static assets
-app.use(express.static(path.join(__dirname, '../public')));
 
 var renderPage = function renderPage(appHtml) {
   return '<!doctype html>\n    <html>\n    <meta charset=utf-8/>\n    <title>My First React Router App</title>\n    <link rel=stylesheet href=\'https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.min.css\'>\n    <div id=app>' + appHtml + '</div>\n    <script src="/bundle.js"></script>\n   ';
 };
 
-app.get('*', function (req, res) {
-  (0, _reactRouter.match)({ routes: _routes2.default, location: req.url }, function (err, redirect, props) {
-    // in here we can make some decisions all at once
-    if (err) {
-      // there was an error somewhere during route matching
-      res.status(500).send(err.message);
-    } else if (redirect) {
-      // we haven't talked about `onEnter` hooks on routes, but before a
-      // route is entered, it can redirect. Here we handle on the server.
-      res.redirect(redirect.pathname + redirect.search);
-    } else if (props) {
-      // if we got props then we matched a route and can render
-      var appHtml = (0, _server.renderToString)(_react2.default.createElement(_reactRouter.RouterContext, props));
-      res.send(renderPage(appHtml));
-    } else {
-      // no errors, no redirect, we just didn't match anything
-      res.status(404).send('Not Found');
-    }
-  });
-});
+function serverRenderer() {
+  return function (req, res, next) {
+    (0, _reactRouter.match)({ routes: _routes2.default, location: req.url }, function (err, redirect, props) {
+      // in here we can make some decisions all at once
+      if (err) {
+        // there was an error somewhere during route matching
+        res.status(500).send(err.message);
+      } else if (redirect) {
+        // we haven't talked about `onEnter` hooks on routes, but before a
+        // route is entered, it can redirect. Here we handle on the server.
+        res.redirect(redirect.pathname + redirect.search);
+      } else if (props) {
+        // if we got props then we matched a route and can render
+        var appHtml = (0, _server.renderToString)(_react2.default.createElement(_reactRouter.RouterContext, props));
+        res.status(200).send(renderPage(appHtml));
+      } else {
+        // no errors, no redirect, we just didn't match anything
+        res.status(404).send('Not Found');
+      }
+    });
+  };
+};
 
-// app.get('*', (req, res) => {
-//   // match the routes to the url
-//   match({ routes, location: req.url }, (err, redirect, props) => {
-//     // `RouterContext` is what the `Router` renders. `Router` keeps these
-//     // `props` in its state as it listens to `browserHistory`. But on the
-//     // server our app is stateless, so we need to use `match` to
-//     // get these props before rendering.
-//     const appHtml = renderToString(<RouterContext {...props} />);
-
-//     // dump the HTML into a template, lots of ways to do this, but none are
-//     // really influenced by React Router, so we're just using a little
-//     // function, `renderPage`
-//     res.send(renderPage(appHtml));
-//   });
-// });
-
-// send all requests to index.html so browserHistory in React Router works
-// app.get('*', (req, res) => {
-//  res.sendFile(path.join(__dirname, '../public', 'index.html'));
-// });
-
-app.listen(PORT, function () {
-  console.log('Express server running at ' + PORT);
-});
-/* WEBPACK VAR INJECTION */}.call(exports, "src"))
+module.exports = {
+  serverRenderer: serverRenderer
+};
 
 /***/ })
 /******/ ]);

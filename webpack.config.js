@@ -25,20 +25,24 @@ const configClient = {
       },
     ],
   },
-  plugins: debug ? [] : [
+  plugins: debug ? [
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),    
+    ] : [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
   ],
 };
 
 const configServer = {
   name: 'server',
-  entry: path.join(APP_DIR, 'server.js'),
+  entry: path.join(APP_DIR, 'server.render.js'),
 
   output: {
     path: SERVER_BUILD_DIR,
-    filename: 'server.bundle.js',
+    libraryTarget: 'commonjs2',     // Or else module.exports will be empty {}
+    filename: 'srender.bundle.js',
   },
 
   target: 'node',

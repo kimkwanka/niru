@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "webpack-dev-server --content-base public --history-api-fallback --inline --hot",
-    "backend": "npm run build && node server.bundle.js",
+    "backend": "npm run build && node ./src/server.js",
     "build": "webpack"
   },
   "license": "MIT",
@@ -25,9 +25,11 @@
   },
   "dependencies": {
     "babel-core": "^6.23.1",
+    "babel-register": "^6.23.0",
     "express": "^4.14.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router": "^3.0.2"
+    "react-router": "^3.0.2",
+    "webpack-hot-server-middleware": "^0.0.4"
   }
 }
