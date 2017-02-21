@@ -23,3 +23,9 @@ app.use(serverRenderer());
 app.listen(PORT, () => {
   console.log(`Express server running at ${PORT}`);
 });
+/*
+process.on('SIGTERM', () => {
+    httpServer.close(() => {
+        process.exit(0);
+    });
+});*/

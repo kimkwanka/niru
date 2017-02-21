@@ -12,7 +12,7 @@ const configClient = {
   entry: [ path.join(APP_DIR, 'client.js') , 'webpack-hot-middleware/client', 'webpack/hot/dev-server'],
   devtool: debug ? 'inline-sourcemap' : null,
   output: {
-    path: '/', //CLIENT_BUILD_DIR,
+    path: '/', //CLIENT_BUILD_DIR,    //Needed for hotreload
     filename: 'bundle.js',
     publicPath: '/',
   },
