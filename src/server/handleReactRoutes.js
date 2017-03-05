@@ -26,7 +26,7 @@ export default (req, res, next) => {
           <RouterContext {...props} />
         </Provider>,
       );
-      res.status(200).render('index', { content: appHtml, preloadedState: store.getState(), title: 'Naito', cssLink, webRoot });
+      res.status(200).render('index', { content: appHtml, preloadedState: store.getState(), title: 'Niru', cssLink, webRoot });
     } else {
       next(); // Let Express handle all other routes
     }
