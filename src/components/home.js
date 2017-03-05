@@ -1,12 +1,20 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/prefer-stateless-function */
-import React from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-array-index-key */
 
+import React from 'react';
+import { connect } from 'react-redux';
+
+@connect(store => ({
+  user: store.user,
+}))
 class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Home :D</h1>
+        <h1>Home sweet Home</h1>
+        <h2>Username: {this.props.user.name}</h2>
       </div>
     );
   }
