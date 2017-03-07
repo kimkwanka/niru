@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "express": "^4.15.0",
+    "normalize.css": "^5.0.0",
     "preact": "^7.2.0",
     "preact-compat": "^3.13.1",
     "pug": "^2.0.0-beta11",
