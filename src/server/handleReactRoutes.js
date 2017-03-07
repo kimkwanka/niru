@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import getRoutes from '../shared/routes';
 import { hydrateStore } from '../shared/store';
 
-const cssLink = (process.env.NODE_ENV !== 'production') ? '' : '/style.css';
+const cssLink = (process.env.NODE_ENV !== 'production') ? '' : 'link rel="stylesheet" href="/style.css"';
 const webRoot = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8081' : '';
 
 export default (req, res, next) => {
