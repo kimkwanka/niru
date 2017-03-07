@@ -5,10 +5,11 @@ html
     meta(charset='utf-8')
     meta(name='description' content='')
     meta(name='viewport' content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href!=cssLink)
+    - if(cssLink)
+      #{cssLink}
   body
     #app!= content          
-  script.
-    window.__PRELOADED_STATE__ = !{JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
-  script(src=webRoot + '/vendor.bundle.js')
-  script(src=webRoot + '/client.bundle.js')
+    script.
+      window.__PRELOADED_STATE__ = !{JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+    script(src=webRoot + '/vendor.bundle.js')
+    script(src=webRoot + '/client.bundle.js')
