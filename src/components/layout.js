@@ -8,9 +8,10 @@ class Layout extends React.Component {
   render() {
     return (
       <div>
-        <main>
+        <main className="container">
           <IndexLink to="/" activeClassName="active"><li className="navItem">Home</li></IndexLink>
           <Link to="/dashboard" activeClassName="active"><li className="navItem">Dashboard</li></Link>
+          <Link to="/styleguide" activeClassName="active"><li className="navItem">Style Guide</li></Link>
           {this.props.children}
         </main>
       </div>

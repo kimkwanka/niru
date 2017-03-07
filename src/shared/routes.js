@@ -4,12 +4,14 @@ import { IndexRoute, Route } from 'react-router';
 import Layout from '../components/layout';
 import Home from '../components/home';
 import Dashboard from '../components/dashboard';
+import StyleGuide from '../components/styleguide';
 
 // export getRoutes function instead of simple JSX to access redux store in checkAuth
 const getRoutes = store => (
   <Route path="/" component={Layout} >
     <IndexRoute component={Home} />
     <Route path="/dashboard" component={Dashboard} />
+    <Route path="/styleguide" component={StyleGuide} />
   </Route>
 );
 
