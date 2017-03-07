@@ -15,6 +15,7 @@ class Home extends React.Component {
       <div>
         <h1>Home sweet Home</h1>
         <h2>Username: {this.props.user.name}</h2>
+        <button>test</button>
       </div>
     );
   }
