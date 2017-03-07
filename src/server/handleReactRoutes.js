@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import getRoutes from '../shared/routes';
 import { hydrateStore } from '../shared/store';
 
-const cssLink = (process.env.NODE_ENV !== 'production') ? '' : 'link rel="stylesheet" href="/style.css"';
+const css = (process.env.NODE_ENV !== 'production') ? '' : 'link rel="stylesheet" href="/style.css"';
 const webRoot = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8081' : '';
 
 export default (req, res, next) => {
@@ -26,7 +26,7 @@ export default (req, res, next) => {
           <RouterContext {...props} />
         </Provider>,
       );
-      res.status(200).render('index', { content: appHtml, preloadedState: store.getState(), title: 'Niru', cssLink, webRoot });
+      res.status(200).render('index', { content: appHtml, preloadedState: store.getState(), title: 'Niru', css, webRoot });
     } else {
       next(); // Let Express handle all other routes
     }
