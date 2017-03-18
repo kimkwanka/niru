@@ -26,7 +26,7 @@ class StyleGuide extends React.Component {
         <u> Underline</u>
         <blockquote>
           <p><em>This is a blockquote</em></p>
-        </blockquote>        
+        </blockquote>
         <button>Default Button</button>
         <a className="button" href="/">Anchor Button</a>
         <button className="button button-outline" >Outlined Button</button>
