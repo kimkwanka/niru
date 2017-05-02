@@ -1,6 +1,6 @@
 const user = (state = {
-  name: 'InsertNameHere',
-  ip: null,
+  name: '',
+  authenticated: false,
 }, action) => {
   switch (action.type) {
     default:

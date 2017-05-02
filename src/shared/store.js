@@ -1,17 +1,15 @@
-/* global window */
 /* eslint-disable no-underscore-dangle */
 import { createStore, applyMiddleware } from 'redux';
-import reducer from '../reducers';
+import reducer from '../client/reducers';
 
 const getHydratedStore = (middleWare) => {
   let preloadedState = {};
-  if (window.__PRELOADED_STATE__) {
-    preloadedState = Object.assign({}, window.__PRELOADED_STATE__);
+  if (window.__INITIAL_STORE__) {
+    preloadedState = Object.assign({}, window.__INITIAL_STORE__);
   }
-  // console.log(preloadedState);
   const store = middleWare ? createStore(reducer, preloadedState, applyMiddleware(middleWare)) :
           createStore(reducer, preloadedState);
-  delete window.__PRELOADED_STATE__;
+  delete window.__INITIAL_STORE__;
   return store;
 };
 

@@ -1,7 +1,5 @@
 const dev = process.env.NODE_ENV !== 'production' && process.argv.indexOf('-p') === -1;
 
-const usePreact = true; // Enable to replace React with Preact for much smaller build sizes
-
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // Use harmony branch "git://github.com/mishoo/UglifyJS2#harmony"" of UglifyJS to handle ES6 code
@@ -10,10 +8,11 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 
 const clientConfig = {
-  context: __dirname,
-  // Remember to use ['babel-polyfill', './src/client.js'] if using unsupported ES6 features
-  entry: dev ? ['webpack-dev-server/client?http://localhost:8081', './src/client/index.js'] : './src/client/index.js',
-  target: 'web',
+  entry: dev ? [
+    'webpack-dev-server/client?http://localhost:8081',
+    'react-hot-loader/patch',
+    './src/client/index.jsx',
+  ] : './src/client/index.jsx',
   devtool: dev ? 'eval' : false,
   output: {
     publicPath: 'http://localhost:8081/',
@@ -21,11 +20,7 @@ const clientConfig = {
     filename: 'client.bundle.js',
   },
   resolve: {
-    extensions: ['.js'],
-    alias: usePreact ? {
-      react: 'preact-compat',
-      'react-dom': 'preact-compat',
-    } : {},
+    extensions: ['.js', '.jsx'],
   },
   stats: {
     colors: true,
@@ -37,11 +32,14 @@ const clientConfig = {
     port: '8081',
     historyApiFallback: true,
     hot: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         use: ['babel-loader'],
         exclude: /(node_modules|bower_components)/,
       },
@@ -61,7 +59,6 @@ const clientConfig = {
   },
   plugins: dev ? [
     new webpack.NamedModulesPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor.bundle.js',
@@ -70,7 +67,6 @@ const clientConfig = {
     new webpack.HotModuleReplacementPlugin(),
   ] : [
     new webpack.NamedModulesPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'vendor.bundle.js',

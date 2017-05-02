@@ -1,16 +1,8 @@
 import express from 'express';
+import reactRoutes from './reactRoutes';
 
 const app = express();
 
-const path = require('path');
-
-const handleReactRoutes = require('./handleReactRoutes').default;
-
-app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'pug');
-
-app.get('*', handleReactRoutes);
-
-app.use(express.static(path.join(__dirname, '../../dist/public')));
+app.use('*', reactRoutes);
 
 export default app;

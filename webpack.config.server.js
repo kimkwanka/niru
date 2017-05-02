@@ -1,7 +1,5 @@
 const dev = process.env.NODE_ENV !== 'production' && process.argv.indexOf('-p') === -1;
 
-const usePreact = true; // Enable to replace React with Preact for much smaller build sizes
-
 const webpack = require('webpack');
 // Use harmony branch "git://github.com/mishoo/UglifyJS2#harmony"" of UglifyJS to handle ES6 code
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -18,16 +16,10 @@ const serverConfig = {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'server.js',
-    //libraryTarget: 'commonjs2',     // Or else module.exports will be empty {}
   },
   target: 'node',
   resolve: {
-    extensions: ['.js'],
-    alias: usePreact ? {
-      react: 'preact-compat',
-      'react-dom': 'preact-compat',
-      'react-dom/server': 'preact-compat',
-    } : {},
+    extensions: ['.js', '.jsx'],
   },
   // Exclude all node_modules from the bundle, except those in the white list.
   // The white listed modules will be transpiled by the babel-loader.
@@ -46,7 +38,7 @@ const serverConfig = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         use: 'babel-loader',
         exclude: /(node_modules|bower_components)/,
       },
