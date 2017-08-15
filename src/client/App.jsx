@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import Header from './pages/shared/Header';
+import Footer from './pages/shared/Footer';
 
 import routesArr from '../shared/routes';
 
@@ -17,7 +18,7 @@ const App = ({ serverMatch }) => {
     routesArr.map(route => <Route key={route.path} {...route} />);
 
   return (
-    <div>
+    <div className="App">
       <Helmet
         htmlAttributes={{ lang: 'en' }}
         titleTemplate="niru | %s"
@@ -27,11 +28,12 @@ const App = ({ serverMatch }) => {
         ]}
       />
       <Header />
-      <main>
+      <main className="page-content relative overflow-hidden">
         <Switch>
           {routes}
         </Switch>
       </main>
+      <Footer />
     </div>
   );
 };

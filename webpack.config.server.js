@@ -1,8 +1,7 @@
 const dev = process.env.NODE_ENV !== 'production' && process.argv.indexOf('-p') === -1;
 
 const webpack = require('webpack');
-// Use harmony branch "git://github.com/mishoo/UglifyJS2#harmony"" of UglifyJS to handle ES6 code
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 const StartServerPlugin = require('start-server-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
@@ -53,7 +52,6 @@ const serverConfig = {
   ] : [
     new webpack.BannerPlugin({ banner: 'require("source-map-support").install();', raw: true, entryOnly: false }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new UglifyJSPlugin({ mangle: false, sourcemap: false }),
   ],
 };
 module.exports = serverConfig;

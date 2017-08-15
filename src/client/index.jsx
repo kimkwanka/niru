@@ -3,18 +3,17 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 
 import store from '../shared/store';
 
 import App from './App';
-import './stylus/style.styl';
+import './style/style.styl';
 
 const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <BrowserRouter history={createBrowserHistory()}>
+        <BrowserRouter>
           <Component />
         </BrowserRouter>
       </Provider>

@@ -15,7 +15,7 @@ const handleNameChange = (e) => {
 };
 
 const Home = ({ user }) => (
-  <div>
+  <div className="container margin-top-small">
     <Helmet title="Home" />
     <h1>Home</h1>
     <h2>Data from (prehydrated) redux store:</h2>

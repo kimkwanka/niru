@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Header = () =>
   (
     <header>
-      <div className="constrained">
+      <div className="container flex">
         <div className="logoText">niru</div>
         <nav>
           <ul>
