@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import Header from './pages/shared/Header';
@@ -17,6 +18,14 @@ const App = ({ serverMatch }) => {
 
   return (
     <div>
+      <Helmet
+        htmlAttributes={{ lang: 'en' }} // amp takes no value
+        titleTemplate="niru | %s"
+        titleAttributes={{ itemprop: 'name', lang: 'en' }}
+        meta={[
+          { name: 'description', content: 'Universal fullstack boilerplate' },
+        ]}
+      />
       <Header />
       <main>
         <Switch>

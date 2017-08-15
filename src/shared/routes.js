@@ -1,5 +1,5 @@
 import Home from '../client/pages/Home/Home';
-import Dashboard from '../client/pages/Dashboard/Dashboard';
+import About from '../client/pages/About/About';
 import StyleGuide from '../client/pages/Styleguide/Styleguide';
 
 const routes = [
@@ -9,9 +9,9 @@ const routes = [
     component: Home,
   },
   {
-    path: '/dashboard',
+    path: '/about',
     exact: true,
-    component: Dashboard,
+    component: About,
   },
   {
     path: '/styleguide',
