@@ -1,32 +1,13 @@
 const dev = process.env.NODE_ENV !== 'production' && process.argv.indexOf('-p') === -1;
 
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// Use harmony branch "git://github.com/mishoo/UglifyJS2#harmony"" of UglifyJS to handle ES6 code
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const usePreact = false;
 
 const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const AssetsPlugin = require('assets-webpack-plugin');
 
-const clientConfig = {
-  entry: dev ? [
-    'webpack-dev-server/client?http://localhost:8081',
-    'react-hot-loader/patch',
-    './src/client/index.jsx',
-  ] : './src/client/index.jsx',
-  devtool: dev ? 'eval' : false,
-  output: {
-    publicPath: 'http://localhost:8081/',
-    path: path.join(__dirname, '/dist/public'),
-    filename: 'client.bundle.js',
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
-  stats: {
-    colors: true,
-    reasons: false,
-    chunks: false,
-  },
+const config = {
   devServer: {
     host: 'localhost',
     port: '8081',
@@ -36,12 +17,33 @@ const clientConfig = {
       'Access-Control-Allow-Origin': '*',
     },
   },
+  devtool: dev ? 'eval' : false,
+  entry: dev ? {
+    main: [
+      'webpack-dev-server/client?http://localhost:8081',
+      'react-hot-loader/patch',
+      path.join(__dirname, '/src/client/index.jsx'),
+    ],
+  } : {
+    main: path.join(__dirname, '/src/client/index.jsx'),
+  },
+  output: {
+    publicPath: 'http://localhost:8081/',
+    path: path.join(__dirname, '/dist/public'),
+    filename: dev ? '[name].js' : '[name]-[chunkhash].js',
+  },
+  stats: {
+    colors: true,
+    reasons: false,
+    chunks: false,
+    progress: true,
+  },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.jsx?$/,
-        use: ['babel-loader'],
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
       },
       {
         test: /\.styl$/,
@@ -57,24 +59,43 @@ const clientConfig = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: usePreact ? {
+      react: 'preact-compat',
+      'react-dom': 'preact-compat',
+      'react-addons-css-transition-group': 'rc-css-transition-group',
+      'preact-compat': 'preact-compat/dist/preact-compat',
+    } : {},
+  },
   plugins: dev ? [
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'vendor.bundle.js',
       minChunks: ({ resource }) => /node_modules/.test(resource),
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'runtime',
+    }),
+    new AssetsPlugin({
+      fullPath: false,
     }),
     new webpack.HotModuleReplacementPlugin(),
   ] : [
-    new webpack.NamedModulesPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'vendor.bundle.js',
       minChunks: ({ resource }) => /node_modules/.test(resource),
     }),
-    new ExtractTextPlugin('style.css'),
-    new UglifyJSPlugin({ mangle: false, sourcemap: false }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'runtime',
+    }),
+    new ExtractTextPlugin('style-[contenthash].css'),
+    new AssetsPlugin({
+      fullPath: false,
+    }),
   ],
 };
 
-module.exports = clientConfig;
+
+module.exports = config;
