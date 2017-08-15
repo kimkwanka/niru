@@ -17,12 +17,14 @@ const handleNameChange = (e) => {
 const Home = ({ user }) => (
   <div className="container margin-top-small">
     <Helmet title="Home" />
-    <h1>Home</h1>
-    <h2>Data from (prehydrated) redux store:</h2>
-    <h3>user.name: {user.name}</h3>
-    <h3>user.authenticated: {user.authenticated ? 'true' : 'false'}</h3>
-    <input type="text" defaultValue={user.name} onChange={handleNameChange} />
-    <button onClick={handleToggleClick}>Toggle Authenticated</button>
+    <h1 className="margin-top">Home</h1>
+    <h3 className="center">Data from (prehydrated) Redux store:</h3>
+    <h4 className="center normal">user.name: <span className="bold">{user.name}</span></h4>
+    <h4 className="center normal">user.authenticated: <span className="bold">{user.authenticated ? 'true' : 'false'}</span></h4>
+    <div className="flex-column align-items-center margin-top-huge">
+      <input type="text" defaultValue={user.name} onChange={handleNameChange} />
+      <button className="margin-top-small button--accent" onClick={handleToggleClick}>Toggle Authenticated</button>
+    </div>
   </div>
   );
 

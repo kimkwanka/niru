@@ -5,7 +5,7 @@ const Header = () =>
   (
     <header>
       <div className="container flex">
-        <div className="logoText">niru</div>
+        <div className="logo-text">niru</div>
         <nav>
           <ul>
             <li><NavLink to="/" exact activeClassName="navItemActive">Home</NavLink></li>

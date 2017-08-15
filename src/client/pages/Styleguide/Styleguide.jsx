@@ -17,27 +17,48 @@ const StyleGuide = () => (
     <a>Anchor</a>
     <em> Emphasis</em>
     <small> Small</small>
-    <strong> Strong</strong>
-    <u> Underline</u>
+    <strong> Strong </strong>
+    <u>Underline</u>
     <blockquote>
       <p><em>This is a blockquote</em></p>
     </blockquote>
-    <button>Default Button</button>
-    <a className="button" href="/">Anchor Button</a>
-    <button className="button button-outline" >Outlined Button</button>
-    <input className="button button-clear" type="submit" value="Clear Button" />
+    <div className="flex justify-space-around margin-vertical-big">
+      <button>Button</button>
+      <a className="button" href="/">Anchor Button</a>
+      <input className="button" type="submit" value="Submit Button" />
+    </div>
+    <div className="flex justify-space-around margin-vertical-big">
+      <button className="button--default">.button--default</button>
+      <button className="button--primary">.button--primary</button>
+      <button className="button--primary-clear">.button--primary-clear</button>
+      <div className="bg-black padding-tiny">
+        <button className="button--white-clear">.button--white-clear</button>
+      </div>
+    </div>
     <hr />
     <ul>
       <li>Unordered list item 1</li>
       <li>Unordered list item 2</li>
+      <ul>
+        <li>Unordered list item 1</li>
+        <li>Unordered list item 2</li>
+      </ul>
     </ul>
     <ol>
       <li>Ordered list item 1</li>
       <li>Ordered list item 2</li>
+      <ol>
+        <li>Ordered list item 1</li>
+        <li>Ordered list item 2</li>
+      </ol>
     </ol>
     <dl>
       <dt>Description list item 1</dt>
       <dd>Description list item 1.1</dd>
+      <dl>
+        <dt>Description list item 1</dt>
+        <dd>Description list item 1.1</dd>
+      </dl>
     </dl>
     <hr />
     <form>
@@ -46,7 +67,7 @@ const StyleGuide = () => (
         <input type="text" placeholder="Your Name here" id="nameField" />
         <label htmlFor="ageRangeField">Age Range</label>
         <select id="ageRangeField">
-          <option value="0-13">0-13</option>
+          <option value="0-13">Age Range</option>
           <option value="14-17">14-17</option>
           <option value="18-23">18-23</option>
           <option value="24+">24+</option>
