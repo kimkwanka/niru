@@ -5,12 +5,10 @@ import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
-import { getHydratedStore } from '../shared/store';
+import store from '../shared/store';
 
 import App from './App';
 import './stylus/style.styl';
-
-const store = getHydratedStore();
 
 const render = (Component) => {
   ReactDOM.render(

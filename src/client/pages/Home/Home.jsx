@@ -1,13 +1,23 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Home = () => (
+const Home = ({ user }) => (
   <div>
     <Helmet title="Home" />
-    <h1>Home sweet Home</h1>
-    <h2>Username</h2>
+    <h1>Home</h1>
+    <h2>Data from prehydrated redux store:</h2>
+    <h3>user.name: {user.name}</h3>
+    <h3>user.authenticated: {user.authenticated ? 'true' : 'false'}</h3>
     <button>test</button>
   </div>
   );
 
-export default Home;
+Home.propTypes = {
+  user: PropTypes.objectOf(PropTypes.shape).isRequired,
+};
+
+export default connect(store => ({
+  user: store.user,
+}))(Home);

@@ -77,8 +77,10 @@ export default (req, res, next) => {
     // Not a React Router route, so let express handle it
     next();
   } else {
-    const user = req.user ? { name: req.user.username, authenticated: true }
-    : { name: '', authenticated: false };
+    const user = {
+      name: 'Bob the User',
+      authenticated: true,
+    };
     const state = { user };
     const store = createStore(reducers, state);
 

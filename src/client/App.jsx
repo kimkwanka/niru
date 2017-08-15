@@ -19,7 +19,7 @@ const App = ({ serverMatch }) => {
   return (
     <div>
       <Helmet
-        htmlAttributes={{ lang: 'en' }} // amp takes no value
+        htmlAttributes={{ lang: 'en' }}
         titleTemplate="niru | %s"
         titleAttributes={{ itemprop: 'name', lang: 'en' }}
         meta={[
