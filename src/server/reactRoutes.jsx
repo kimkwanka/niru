@@ -20,8 +20,8 @@ const vendorJs = (process.env.NODE_ENV !== 'production') ? `${webRoot}/vendor.js
 const mainJs = (process.env.NODE_ENV !== 'production') ? `${webRoot}/main.js` : `${webRoot}/${webpackAssets.main.js}`;
 
 const renderPage = (matchedRoute, store) => {
-  // We need to provide the serverMatch prop to <App /> since we are on the server side
-  // and can only render a single route with StaticRoute
+  // We need to provide the serverRoute prop to <App /> since we are on the server side
+  // and can only render a single route with StaticRouter
   // (Switch is not working like on client side)
 
   const reactMarkup = renderToString(
