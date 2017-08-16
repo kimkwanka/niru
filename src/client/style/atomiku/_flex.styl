@@ -1,3 +1,6 @@
+.flex-none
+  flex: none
+
 .flex
   display: flex
 
@@ -5,17 +8,30 @@
   display: flex
   flex-direction: column
 
+.flex-column-reverse
+  display: flex
+  flex-direction: column-reverse
+
 .flex-wrap
   flex-wrap: wrap
 
-.align-items-start
+.flex-wrap-reverse
+  flex-wrap: wrap-reverse
+
+.items-start
   align-items: flex-start
 
-.align-items-center
+.items-center
   align-items: center
 
-.align-items-end
+.items-end
   align-items: flex-end
+
+.items-stretch
+  align-items: stretch
+
+.items-baseline
+  align-items: baseline
 
 .justify-start
   justify-content: flex-start
@@ -26,11 +42,29 @@
 .justify-end
   justify-content: flex-end
 
-.justify-space-between
+.justify-between
   justify-content: space-between
 
-.justify-space-around
+.justify-around
   justify-content: space-around
+
+.content-start
+  align-content: flex-start
+
+.content-end
+  align-content: flex-end
+
+.content-center
+  align-content: center
+
+.content-between
+  align-content: space-between
+
+.content-around
+  align-content: space-around
+
+.content-stretch
+  align-content: stretch
 
 .flex-0
   flex: 0
