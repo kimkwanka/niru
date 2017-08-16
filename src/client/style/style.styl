@@ -1,7 +1,6 @@
 // You can easily overwrite the default variables like this:
 
-// $primaryColor = blue
-// $spaceSize = 30px
+$accentColor = #00A7E1
 
 // (Check /sutairu/base/_defaultVars.styl and /atomiku/_defaultVars for all default variables.)
 
@@ -52,6 +51,13 @@ nav
   @extend .button--default
   @extend .c-primary
   @extend .border-primary
+  @extend .bg-transparent
+  @extend .bg-hover-black
+
+.button--accent-clear
+  @extend .button--default
+  @extend .c-accent
+  @extend .border-accent
   @extend .bg-transparent
   @extend .bg-hover-black
 

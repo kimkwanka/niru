@@ -31,6 +31,7 @@ const StyleGuide = () => (
       <button className="button--default">.button--default</button>
       <button className="button--primary">.button--primary</button>
       <button className="button--primary-clear">.button--primary-clear</button>
+      <button className="button--accent-clear">.button--accent-clear</button>
       <div className="bg-black padding-tiny">
         <button className="button--white-clear">.button--white-clear</button>
       </div>
