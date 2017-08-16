@@ -21,7 +21,7 @@ const Home = ({ user }) => (
     <h3 className="center">Data from (prehydrated) Redux store:</h3>
     <h4 className="center normal">user.name: <span className="bold">{user.name}</span></h4>
     <h4 className="center normal">user.authenticated: <span className="bold">{user.authenticated ? 'true' : 'false'}</span></h4>
-    <div className="flex-column align-items-center margin-top-huge">
+    <div className="flex-column items-center margin-top-big">
       <input type="text" defaultValue={user.name} onChange={handleNameChange} />
       <button className="margin-top-small button--accent" onClick={handleToggleClick}>Toggle Authenticated</button>
     </div>

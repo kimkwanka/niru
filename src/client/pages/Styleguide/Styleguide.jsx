@@ -22,12 +22,12 @@ const StyleGuide = () => (
     <blockquote>
       <p><em>This is a blockquote</em></p>
     </blockquote>
-    <div className="flex justify-space-around margin-vertical-big">
+    <div className="flex justify-around margin-vertical-big">
       <button>Button</button>
       <a className="button" href="/">Anchor Button</a>
       <input className="button" type="submit" value="Submit Button" />
     </div>
-    <div className="flex justify-space-around margin-vertical-big">
+    <div className="flex justify-around margin-vertical-big">
       <button className="button--default">.button--default</button>
       <button className="button--primary">.button--primary</button>
       <button className="button--primary-clear">.button--primary-clear</button>

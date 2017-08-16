@@ -4,7 +4,7 @@ const year = new Date().getFullYear();
 
 const Footer = () => (
   <footer>
-    <div className="container flex-column align-items-center">
+    <div className="container flex-column items-center">
       <h5 className="margin-top-small">This is a sticky footer!</h5>
       <h5>
         <a
