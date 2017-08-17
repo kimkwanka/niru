@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
+import ScrollToTop from './pages/shared/ScrollToTop';
 import Header from './pages/shared/Header';
 import Footer from './pages/shared/Footer';
 
@@ -18,23 +19,25 @@ const App = ({ serverRoute }) => {
     routesArr.map(route => <Route key={route.path} {...route} />);
 
   return (
-    <div className="App">
-      <Helmet
-        htmlAttributes={{ lang: 'en' }}
-        titleTemplate="niru | %s"
-        titleAttributes={{ itemprop: 'name', lang: 'en' }}
-        meta={[
-          { name: 'description', content: 'Universal fullstack boilerplate' },
-        ]}
-      />
-      <Header />
-      <main className="page-content relative overflow-hidden">
-        <Switch>
-          {routes}
-        </Switch>
-      </main>
-      <Footer />
-    </div>
+    <ScrollToTop>
+      <div className="App">
+        <Helmet
+          htmlAttributes={{ lang: 'en' }}
+          titleTemplate="niru | %s"
+          titleAttributes={{ itemprop: 'name', lang: 'en' }}
+          meta={[
+            { name: 'description', content: 'Universal fullstack boilerplate' },
+          ]}
+        />
+        <Header />
+        <main className="page-content relative overflow-hidden">
+          <Switch>
+            {routes}
+          </Switch>
+        </main>
+        <Footer />
+      </div>
+    </ScrollToTop>
   );
 };
 

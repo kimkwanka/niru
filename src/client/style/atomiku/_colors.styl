@@ -9,11 +9,20 @@ createColors(cNames, cVals)
     .bg-hover-{name}
       &:hover
         background: cVals[i] !important
+    .bg-focus-{name}
+      &:focus
+        background: cVals[i] !important
     .border-hover-{name}
       &:hover
         border-color: cVals[i] !important
+    .border-focus-{name}
+      &:focus
+        border-color: cVals[i] !important
     .c-hover-{name}
       &:hover
+        color: cVals[i] !important
+    .c-focus-{name}
+      &:focus
         color: cVals[i] !important
 createColors($colorNames, $colorValues)
 
