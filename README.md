@@ -4,22 +4,23 @@ Universal / isomorphic fullstack boilerplate with React, React-Router, React-Red
 ## What is niru?
 Niru (*japanese: 'to boil'*) is a somewhat opinionated React boilerplate to make app creation as fast as possible.
 
-Although primarily written for my own needs I want to share it so people can use it directly or maybe just have a reference on how to accomplish some more complicated things in the React ecosystem.
+Although primarily written for my own needs I want to share it so people can use it directly or maybe just have a reference on how to accomplish some of the weirder things in the React ecosystem.
 
 Unlike most boilerplates it comes with its own 2 mini CSS frameworks to not only make apps look pleasing right from the beginning but also leverage functional / atomic css to speed up development.
 
-### JS Features
+### Main Features
 + State management via React Redux (with prehydrated store)
 + Uses Redux devtools if installed and logs state changes to console (in development mode)
 + Action creators are prebound to dispatch()
 + Routing via React-Router V4
 + Server side rendering
 + Hot reloading (redux state preserving) on client and server side
-+ Dynamic document <head> via React-Helmet
++ Dynamic document ```<head>``` via React-Helmet
 + Able to use 'preact' instead of 'React' by just changing a variable
 + Automatic cache invalidation via use of hash based bundle filenames
 + AirBnB ESLint profile for use with your favorite Code Editor's ESLint plugin
 + ES6 on the server side
++ A sticky footer :)
 
 ### CSS Features:
 + Stylus support
@@ -99,7 +100,7 @@ If you create subfolders in ```/assets``` they will be preserved.
 
 ### Adding a new page
 Niru uses a ```routes.js``` file to define all routes that are used. So in order to hook up any new page components you create you will have to add it to routes.js. Just take a look how the default pages are used in that file and do the same for your new page.
-Be sure to also add a link to your page in ```Header.jsx``` inside ```/src/client/components/shared``` or you'd have to manually type the url in order to see it.
+Be sure to also add a link to your page in ```Header.jsx``` inside ```/src/client/components/shared``` or you'd have to manually type in the url in order to see it.
 
 **Note:**
 If you add a page to routes.js while ```yarn dev``` is running you will have to restart it for the server side to catch up with the changes.
@@ -118,7 +119,7 @@ By default [normalize.css](https://necolas.github.io/normalize.css/) is included
 in ```/style/sutairu/index.styl```.
 
 ### Sutairu
-Sutairu is a really minimal CSS framework that gives niru some default styling to make you not want to gouge your eyes out. The easiest way to customize it is to overwrite its default variables in ```style.styl```, right above(!) the import statements. If you put the overwrites below the imports it won't work. All possible variables can be found in ```/style/sutairu/base/_defaultVars.styl```.
+Sutairu is a really minimal CSS framework I created that gives niru some default styling to make you not want to gouge your eyes out. The easiest way to customize it is to overwrite its default variables in ```style.styl```, right above(!) the import statements. If you put the overwrites below the imports it won't work. All possible variables can be found in ```/style/sutairu/base/_defaultVars.styl```.
 If for example you want to overwrite the primary color to sexy red and the button font size to 96px, you'd add the following lines at the beginning of ```style.styl```:
 ```
 $primaryColor = red
@@ -131,7 +132,7 @@ If you don't want to use sutairu just remove its import in ```style.styl``` by c
 @import './sutairu'
 ```
 ### Atomiku
-Atomiku is small functional CSS framework which gives you small css "modifiers" that you can directly apply to your components to make speed up app development.
+Atomiku is my functional CSS mini framework which gives you small css "modifiers" that you can directly apply to your components to make speed up app development.
 The idea is instead of writing the same CSS over and over again for 1000 different classes you only write it once and then compose.
 An example of such usage can be seen in ```Home.jsx``` where the ```<div>``` is defined like this:
 ```
@@ -143,7 +144,7 @@ To see which functional css bits are available, have a look at the files inside 
 
 For a more thorough introduction to functional CSS check out https://marcelosomers.com/writing/rationalizing-functional-css/.
 
-Like sutairu, atomiku can be somewhat customized by overwriting its default variables which you can find in  ```/style/atomiku/_defaultVars.styl```. The same "rules" apply here.
+Like sutairu, atomiku can be somewhat customized by overwriting its default variables which you can find in ```/style/atomiku/_defaultVars.styl```. The same "rules" apply here.
 
 The cool thing about functional CSS is that you don't have to use it everywhere. You can easily just use it in addition to your regular BEM / SMACCS or whatever CSS to cut down on the number of classes you need to manually create.
 
