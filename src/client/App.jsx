@@ -3,9 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import ScrollToTop from './pages/shared/ScrollToTop';
-import Header from './pages/shared/Header';
-import Footer from './pages/shared/Footer';
+import ScrollToTop from './components/shared/ScrollToTop';
+import Header from './components/shared/Header';
+import Footer from './components/shared/Footer';
 
 import routesArr from '../shared/routes';
 

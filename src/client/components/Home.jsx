@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import actions from '../../actions';
+import actions from '../actions';
 
 const { renameUser, toggleAuthenticated } = actions;
 
@@ -17,7 +17,7 @@ const handleNameChange = (e) => {
 const Home = ({ user }) => (
   <div className="container margin-top-small">
     <Helmet title="Home" />
-    <h1 className="margin-top">Home</h1>
+    <h1>Home</h1>
     <h3 className="center">Data from (prehydrated) Redux store:</h3>
     <h4 className="center normal">user.name: <span className="bold">{user.name}</span></h4>
     <h4 className="center normal">user.authenticated: <span className="bold">{user.authenticated ? 'true' : 'false'}</span></h4>

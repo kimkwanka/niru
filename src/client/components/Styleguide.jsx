@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 const StyleGuide = () => (
   <div className="container margin-top-small">
     <Helmet title="Styleguide" />
+    <h1 className="margin-bottom-small">Styleguide</h1>
     <h1>H1 Heading</h1>
     <h2>H2 Heading</h2>
     <h3>H3 Heading</h3>
@@ -22,16 +23,24 @@ const StyleGuide = () => (
     <blockquote>
       <p><em>This is a blockquote</em></p>
     </blockquote>
-    <div className="flex justify-around margin-vertical-big">
+    <div className="flex justify-around margin-vertical-small">
       <button>Button</button>
       <a className="button" href="/">Anchor Button</a>
       <input className="button" type="submit" value="Submit Button" />
     </div>
-    <div className="flex justify-around margin-vertical-big">
-      <button className="button--default">.button--default</button>
-      <button className="button--primary">.button--primary</button>
-      <button className="button--primary-clear">.button--primary-clear</button>
-      <button className="button--accent-clear">.button--accent-clear</button>
+    <div className="flex flex-wrap justify-around margin-vertical-small">
+      <div className="padding-tiny">
+        <button className="button--default">.button--default</button>
+      </div>
+      <div className="padding-tiny">
+        <button className="button--primary">.button--primary</button>
+      </div>
+      <div className="padding-tiny">
+        <button className="button--primary-clear">.button--primary-clear</button>
+      </div>
+      <div className="padding-tiny">
+        <button className="button--accent-clear">.button--accent-clear</button>
+      </div>
       <div className="bg-black padding-tiny">
         <button className="button--white-clear">.button--white-clear</button>
       </div>

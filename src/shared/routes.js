@@ -1,6 +1,6 @@
-import Home from '../client/pages/Home/Home';
-import About from '../client/pages/About/About';
-import StyleGuide from '../client/pages/Styleguide/Styleguide';
+import Home from '../client/components/Home';
+import About from '../client/components/About';
+import StyleGuide from '../client/components/Styleguide';
 
 const routes = [
   {
