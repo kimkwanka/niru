@@ -6,11 +6,12 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn run build && node ./dist/server",
-    "build": "rm -rf ./dist && yarn run build:server && yarn run build:client",
+    "build": "yarn run copyassets && yarn run build:server && yarn run build:client",
     "build:client": "webpack -p --config webpack.config.client.js",
     "build:server": "webpack -p --config webpack.config.server.js",
-    "dev": "rm -rf ./dist && npm-run-all --parallel dev:client dev:server",
-    "dev:server": "rm -rf ./dist && webpack --config webpack.config.server.js",
+    "copyassets": "rimraf ./dist && mkdirp ./dist/public && ncp ./src/assets/ ./dist/public/",
+    "dev": "yarn run copyassets && npm-run-all --parallel dev:client dev:server",
+    "dev:server": "webpack --config webpack.config.server.js",
     "dev:client": "webpack-dev-server --config webpack.config.client.js"
   },
   "dependencies": {
@@ -25,8 +26,7 @@
     "react-hot-loader": "3.0.0-beta.6",
     "react-redux": "^5.0.3",
     "react-router-dom": "^4.1.1",
-    "redux": "^3.6.0",
-    "redux-logger": "^3.0.6"
+    "redux": "^3.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -46,8 +46,12 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.2.1",
     "extract-text-webpack-plugin": "^3.0.0",
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0",
     "npm-run-all": "^4.0.2",
     "postcss-loader": "^2.0.6",
+    "redux-logger": "^3.0.6",
+    "rimraf": "^2.6.1",
     "start-server-webpack-plugin": "^2.1.2",
     "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
