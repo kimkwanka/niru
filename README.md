@@ -39,20 +39,28 @@ So assuming you have cloned the niru repository and got yarn installed, 'cd' int
 yarn
 ```
 to install all the dependencies.
-
+## Development mode
 To run niru in development mode:
 ```
 yarn dev
 ```
+Open your browser on ```localhost:8080``` to see the running app.
+## Production mode
 To run niru in production mode:
 ```
 yarn start
 ```
+By default niru will run on ```localhost:8080``` even in production. To change the production port, you need to provide an
+environment variable ```PORT``` or just edit the following line in ```/src/server/index.js``` directly:
+```
+const PORT = process.env.PORT || 8080; // Change to whatever you want!
+```
+## Build only
 To build for production without running:
 ```
 yarn build
 ```
-
+## Other commands
 The ```dev``` and ```build``` commands can also be used to only start / build either client or server side like:
 ```
 yarn dev:client
@@ -104,6 +112,17 @@ Be sure to also add a link to your page in ```Header.jsx``` inside ```/src/clien
 
 **Note:**
 If you add a page to routes.js while ```yarn dev``` is running you will have to restart it for the server side to catch up with the changes.
+
+### Express server routing flow
+Niru's express server first tries to resolve any routes as a React-Router route. If the route is defined in ```routes.js``` the appropriate
+React component page will be rendered on the server and served as HTML. 
+
+If you however requested ```/api``` for example which is not defined in there, ```reactRoutes.jsx``` middleware will pass
+on the request via ```next()``` so that other express can try to find another matching middleware / route to fulfill the request. 
+To try this out I added a really simple example API in ```api.js``` that can be accessed on ```/api```.
+If you want to add your own API just edit ```api.js``` or replace it with something more fitting for your needs.
+
+When the route is neither defined in ```routes.js``` nor in any other middleware, the server will just respond with HTTP STATUS CODE ```404```.
 
 ### Using stylus / CSS
 Niru comes with stylus support out of the box so in order to edit the app's style just edit the ```style.styl``` file.

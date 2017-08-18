@@ -30,7 +30,7 @@ const renderPage = (matchedRoute, store) => {
         <App serverRoute={matchedRoute} />
       </StaticRouter>
     </Provider>,
-    );
+  );
 
   const helmet = Helmet.renderStatic();
 
@@ -85,7 +85,7 @@ export default (req, res, next) => {
     const store = createStore(reducers, state);
 
     res.set('Content-Type', 'text/html')
-    .status(200)
-    .end(renderPage(matchedRoute, store));
+      .status(200)
+      .end(renderPage(matchedRoute, store));
   }
 };
