@@ -59,17 +59,20 @@ const renderPage = (matchedRoute, store) => {
 
 export default (req, res, next) => {
   let matchedRoute = null;
-  // Check if the requested url is one of the React Router routes from routes.js
+
+    // Check if the requested url is one of the React Router routes from routes.js
   for (let i = 0; i < routes.length; i += 1) {
-    matchedRoute = matchPath(req.baseUrl, {
+    const pathMatch = matchPath(req.baseUrl, {
       path: routes[i].path,
       exact: routes[i].exact,
       strict: false,
     });
 
-    if (matchedRoute) {
-      matchedRoute = routes[i];
-      matchedRoute.url = matchedRoute.path;
+    if (pathMatch) {
+      matchedRoute = {
+        ...routes[i],
+        url: pathMatch.url,
+      };
       break;
     }
   }
