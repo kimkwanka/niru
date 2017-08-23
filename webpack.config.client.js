@@ -3,8 +3,11 @@ const dev = process.env.NODE_ENV !== 'production' && process.argv.indexOf('-p') 
 const usePreact = false;
 
 const path = require('path');
+const glob = require('glob');
+
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const PurifyCSSPlugin = require('purifycss-webpack');
 const AssetsPlugin = require('assets-webpack-plugin');
 
 const config = {
@@ -91,6 +94,14 @@ const config = {
       name: 'runtime',
     }),
     new ExtractTextPlugin('style-[contenthash].css'),
+    new PurifyCSSPlugin({
+      paths: glob.sync(path.join(__dirname, '/src/client/**/*.jsx'), { nodir: true }),
+      minimize: true,
+      purifyOptions: {
+        info: true,
+        rejected: false,
+      },
+    }),
     new AssetsPlugin({
       fullPath: false,
     }),
