@@ -30,7 +30,7 @@ Unlike most boilerplates it comes with its own 2 mini CSS frameworks to not only
 + 'Sutairu' - minimalistic CSS framework based on http://milligram.io/
 + 'Atomiku' - functional CSS framework inspired by http://tachyons.io/
 + Easily extendable and customizable via variables
-+ [PurifyCSS](https://github.com/purifycss/purifycss) (custom fork) to remove all CSS classes from your .css.
++ [PurifyCSS](https://github.com/purifycss/purifycss) (custom fork) to remove all unused CSS classes from your .css.
 
 ## Installation
 It is recommended to use [yarn](https://yarnpkg.com/lang/en/) for package management instead of npm. 
