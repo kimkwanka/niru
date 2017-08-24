@@ -119,7 +119,7 @@ Niru's express server first tries to resolve any routes as a React-Router route.
 React component page will be rendered on the server and served as HTML. 
 
 If you however requested ```/api``` for example which is not defined in there, ```reactRoutes.jsx``` middleware will pass
-on the request via ```next()``` so that other express can try to find another matching middleware / route to fulfill the request. 
+on the request via ```next()``` so that express can try to find another matching middleware / route to fulfill the request. 
 To try this out I added a really simple example API in ```api.js``` that can be accessed on ```/api```.
 If you want to add your own API just edit ```api.js``` or replace it with something more fitting for your needs.
 
