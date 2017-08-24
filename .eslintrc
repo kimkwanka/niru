@@ -1,14 +1,8 @@
 {
     "extends": "airbnb",
+    "parser": "babel-eslint",
     "env": {
-        "browser": true,
-        "es6": true,
-        "mocha": true
-    },
-    "plugins": [
-        "react",
-        "jsx-a11y",
-        "import"
-    ],
-     "parser": "babel-eslint"
+      "browser": true,
+      "es6": true
+    }
 }
