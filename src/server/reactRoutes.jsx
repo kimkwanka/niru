@@ -11,7 +11,11 @@ import reducers from '../client/reducers';
 
 const fs = require('fs');
 
-const webpackAssets = JSON.parse(fs.readFileSync('webpack-assets.json', 'utf8'));
+let webpackAssets = null;
+
+if (process.env.NODE_ENV === 'production') {
+  webpackAssets = JSON.parse(fs.readFileSync('webpack-assets.json', 'utf8'));
+}
 
 const webRoot = (process.env.NODE_ENV !== 'production') ? 'http://localhost:8081' : '';
 const cssFile = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="${webRoot}/${webpackAssets.main.css}">`;
