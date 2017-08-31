@@ -184,7 +184,7 @@ If you don't want to use atomiku at all though, just remove its import in ```sty
 ```
 
 ### PurifyCSS
-When you run in production mode ```yarn start``` or just build for production with ```yarn build``` PurifyCSS is automatically run to so that all unused CSS is removed from the resulting .css file.
+When you run in production mode with ```yarn build:start``` or just build for production with ```yarn build``` PurifyCSS will automatically remove all unused CSS from the resulting .css file.
 
 ## Preact
 Niru is able to use the smaller (and sometimes faster) [preact](https://preactjs.com/) instead of React out of the box. To enable preact, open ```webpack.config.client.js``` (be sure to stop niru) and change
