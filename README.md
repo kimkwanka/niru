@@ -49,8 +49,9 @@ Open your browser on ```localhost:8080``` to see the running app.
 ## Production mode
 To run niru in production mode:
 ```
-yarn start
+yarn build:start
 ```
+This will first build all assets and then run the server.
 By default niru will run on ```localhost:8080``` even in production. To change the production port, you need to provide an
 environment variable ```PORT``` or just edit the following line in ```/src/server/index.js``` directly:
 ```
@@ -61,6 +62,15 @@ To build for production without running:
 ```
 yarn build
 ```
+## Start only
+To start the server in production mode after everything was built using ```yarn build```:
+```
+yarn start
+```
+### Notes on deployment on Heroku
+By default heroku just runs "yarn start" after installing the dependencies but as you have seen before, doing so just runs the server without building the assets.
+Although one could include the build step into the "yarn start" script it would mean that each time your app is starting up from heroku's "hibernation", it would also run the lengthy build step again. Apart from making your app take longer to start up this can also lead to a memory issue that makes your app unable to even start up.
+Therefore, for deployment on heroku a ```heroku-postbuild``` script is included which automatically builds all the assets after installing the dependencies. This way everything is already built and ready to be run, even after hibernation.
 ## Other commands
 The ```dev``` and ```build``` commands can also be used to only start / build either client or server side like:
 ```
