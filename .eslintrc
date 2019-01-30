@@ -1,3 +1,13 @@
 {
-    "extends": "airbnb"
+    "extends": "airbnb",
+    "rules": {
+        "jsx-a11y/label-has-associated-control": ["error", { 
+            "assert": "either"
+        }],
+        "jsx-a11y/label-has-for": ["error", { 
+            "required": { 
+                "some": ["nesting", "id"]
+            } 
+        }]
+    }
 }

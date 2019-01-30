@@ -12,10 +12,14 @@ const StyleGuide = () => (
     <h5>H5 Heading</h5>
     <h6>H6 Heading</h6>
     <hr />
-    <p>p</p><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+    <p>p</p>
+    <p>
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
       sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-      sed diam voluptua.</p>
-    <a>Anchor</a>
+      sed diam voluptua.
+
+    </p>
+    <a href="/">Anchor</a>
     <em> Emphasis</em>
     <small> Small</small>
     <strong> Strong </strong>
@@ -24,25 +28,25 @@ const StyleGuide = () => (
       <p><em>This is a blockquote</em></p>
     </blockquote>
     <div className="flex justify-around margin-vertical-small">
-      <button>Button</button>
+      <button type="button">Button</button>
       <a className="button" href="/">Anchor Button</a>
       <input className="button" type="submit" value="Submit Button" />
     </div>
     <div className="flex flex-wrap justify-around margin-vertical-small">
       <div className="padding-tiny">
-        <button className="button--default">.button--default</button>
+        <button className="button--default" type="button">.button--default</button>
       </div>
       <div className="padding-tiny">
-        <button className="button--primary">.button--primary</button>
+        <button className="button--primary" type="button">.button--primary</button>
       </div>
       <div className="padding-tiny">
-        <button className="button--primary-clear">.button--primary-clear</button>
+        <button className="button--primary-clear" type="button">.button--primary-clear</button>
       </div>
       <div className="padding-tiny">
-        <button className="button--accent-clear">.button--accent-clear</button>
+        <button className="button--accent-clear" type="button">.button--accent-clear</button>
       </div>
       <div className="bg-black padding-tiny">
-        <button className="button--white-clear">.button--white-clear</button>
+        <button className="button--white-clear" type="button">.button--white-clear</button>
       </div>
     </div>
     <hr />
@@ -73,17 +77,23 @@ const StyleGuide = () => (
     <hr />
     <form>
       <fieldset>
-        <label htmlFor="nameField">Name</label>
-        <input type="text" placeholder="Your Name here" id="nameField" />
-        <label htmlFor="ageRangeField">Age Range</label>
-        <select id="ageRangeField">
-          <option value="0-13">Age Range</option>
-          <option value="14-17">14-17</option>
-          <option value="18-23">18-23</option>
-          <option value="24+">24+</option>
-        </select>
-        <label htmlFor="commentField">Comment</label>
-        <textarea placeholder="Hi there …" id="commentField" />
+        <label htmlFor="nameField">
+        Name
+          <input type="text" placeholder="Your Name here" id="nameField" />
+        </label>
+        <label htmlFor="ageRangeField">
+        Age Range
+          <select id="ageRangeField">
+            <option value="0-13">Age Range</option>
+            <option value="14-17">14-17</option>
+            <option value="18-23">18-23</option>
+            <option value="24+">24+</option>
+          </select>
+        </label>
+        <label htmlFor="commentField">
+        Comment
+          <textarea placeholder="Hi there …" id="commentField" />
+        </label>
         <div className="float-right">
           <input type="checkbox" id="confirmField" />
           <label className="label-inline" htmlFor="confirmField">Send a copy to yourself</label>
@@ -117,10 +127,13 @@ const StyleGuide = () => (
       </tbody>
     </table>
     <hr />
-    <pre><code>
+    <pre>
+      <code>
       yarn global add webpack
-    </code></pre>
+      </code>
+
+    </pre>
   </div>
-  );
+);
 
 export default StyleGuide;

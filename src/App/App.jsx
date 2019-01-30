@@ -1,25 +1,23 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import Home from '../Home/Home';
 import About from '../About/About';
 import Styleguide from '../Styleguide/Styleguide';
 
-const App = () => {
-
-  return (
-    <Router>
-      <div className="App">
-        <Helmet
-          htmlAttributes={{ lang: 'en' }}
-          titleTemplate="reniru | %s"
-          titleAttributes={{ itemprop: 'name', lang: 'en' }}
-          meta={[
-            { name: 'description', content: 'Universal fullstack boilerplate' },
-          ]}
-        />
-        <nav>
+const App = () => (
+  <Router>
+    <div className="App">
+      <Helmet
+        htmlAttributes={{ lang: 'en' }}
+        titleTemplate="reniru | %s"
+        titleAttributes={{ itemprop: 'name', lang: 'en' }}
+        meta={[
+          { name: 'description', content: 'Universal fullstack boilerplate' },
+        ]}
+      />
+      <nav>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -37,9 +35,8 @@ const App = () => {
         <Route path="/about" component={About} />
         <Route path="/styleguide" component={Styleguide} />
       </main>
-      </div>
-    </Router>
-  );
-};
+    </div>
+  </Router>
+);
 
 export default App;
