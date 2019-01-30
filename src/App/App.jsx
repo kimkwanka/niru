@@ -1,6 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 import Home from '../Home/Home';
 import About from '../About/About';
