@@ -24,5 +24,7 @@
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --open --mode development"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-router-dom": "^4.3.1"
+  }
 }
