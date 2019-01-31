@@ -25,11 +25,12 @@
     "stylus-loader": "^3.0.2",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1"
   },
   "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack-dev-server --open --mode development"
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server --open --config webpack.dev.js"
   },
   "dependencies": {
     "autoprefixer": "^9.4.7",
