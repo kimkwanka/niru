@@ -1,0 +1,22 @@
+// Set box-sizing globally to handle padding and border widths
+*,
+*:after,
+*:before
+  box-sizing: inherit
+  font-family: $fontFamily
+  -webkit-font-smoothing antialiased
+
+// Set base font size to 62.5% so that 1.6rem = 16px
+html
+  box-sizing: border-box
+  font-size: 62.5%
+
+body
+  color: $textColor
+  background: $backgroundColor
+  font-size: $fontSize
+  font-weight: $fontWeight
+  letter-spacing: .01em
+  line-height: $lineHeight
+  margin 0
+  padding 0

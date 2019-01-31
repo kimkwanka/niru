@@ -30,7 +30,7 @@ const App = () => (
           </li>
         </ul>
       </nav>
-      <main>
+      <main className="page-content relative overflow-hidden">
         <Route path="/" exact component={Home} />
         <Route path="/about" component={About} />
         <Route path="/styleguide" component={Styleguide} />

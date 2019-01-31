@@ -1,0 +1,30 @@
+.button,
+button,
+input[type='button'],
+input[type='reset'],
+input[type='submit']
+  background-color: $buttonColor
+  border: $buttonBorderWidth solid $buttonBorderColor
+  border-radius: $buttonBorderRadius
+  color: $buttonTextColor
+  cursor: pointer
+  display: inline-block
+  font-size: $buttonFontSize
+  font-weight: $buttonFontWeight
+  font-family: $fontFamily
+  height: $buttonHeight
+  letter-spacing: .1rem
+  line-height: $buttonHeight
+  padding: 0 3.0rem
+  text-align: center
+  text-decoration: none
+  white-space: nowrap
+
+  &:focus, &:hover
+    outline: none
+  &:hover
+    background-color: $buttonHoverColor
+    border-color: $buttonHoverBorderColor
+  &[disabled]
+    cursor: default
+    opacity: .5
