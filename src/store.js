@@ -27,9 +27,9 @@ const getHydratedStore = () => {
 
   // Use Redux Dev Tools, if available
   const composeEnhancers = devTools.compose || compose;
-  const store = middleware ?
-    createStore(reducers, preloadedState, composeEnhancers(applyMiddleware(...middleware))) :
-    createStore(reducers, preloadedState, devTools.extension && devTools.extension());
+  const store = middleware
+    ? createStore(reducers, preloadedState, composeEnhancers(applyMiddleware(...middleware)))
+    : createStore(reducers, preloadedState, devTools.extension && devTools.extension());
 
   return store;
 };
