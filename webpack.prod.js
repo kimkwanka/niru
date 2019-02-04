@@ -1,15 +1,26 @@
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurifyCSSPlugin = require('purifycss-webpack');
+
 const common = require('./webpack.common.js');
+
+const path = require('path');
+const glob = require('glob');
 
 module.exports = merge(common, {
   mode: 'production',
   plugins: [
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
       filename: '[name].css',
       chunkFilename: '[id].css',
+    }),
+    new PurifyCSSPlugin({
+      paths: glob.sync(path.join(__dirname, '/src/components/**/*.jsx'), { nodir: true }),
+      minimize: true,
+      purifyOptions: {
+        info: true,
+        rejected: false,
+      },
     }),
   ],
   module: {
