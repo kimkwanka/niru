@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const common = require('./webpack.common.js');
 
@@ -10,6 +11,7 @@ const glob = require('glob');
 module.exports = merge(common, {
   mode: 'production',
   plugins: [
+    new CopyWebpackPlugin([{ from: path.join(__dirname, '/src/static'), to: path.join(__dirname, '/dist') }]),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',

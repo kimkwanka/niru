@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "autoprefixer": "^9.4.7",
+    "copy-webpack-plugin": "^4.6.0",
     "cssnano": "^4.1.8",
     "prop-types": "^15.6.2",
     "purify-css": "https://github.com/kimkwanka/purifycss.git",
