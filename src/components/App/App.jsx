@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import { hot } from 'react-hot-loader/root'
+import { hot } from 'react-hot-loader/root';
 
 import Home from '../Home/Home';
 import About from '../About/About';
