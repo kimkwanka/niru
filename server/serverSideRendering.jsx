@@ -10,10 +10,6 @@ import App from '../src/components/App/App';
 import reducers from '../src/reducers';
 
 const renderPage = (req, store) => {
-  // We need to provide the serverRoute prop to <App /> since we are on the server side
-  // and can only render a single route with StaticRouter
-  // (Switch is not working like on client side)
-
   const reactMarkup = renderToString(
     <Provider store={store}>
       <StaticRouter context={{}} location={req.url}>
@@ -23,6 +19,8 @@ const renderPage = (req, store) => {
   );
 
   const helmet = Helmet.renderStatic();
+
+  const reloadScript = (process.env.NODE_ENV !== 'production') ? '<script src="/reload/reload.js"></script> ' : '';
 
   return `
   <!DOCTYPE html>
@@ -39,6 +37,7 @@ const renderPage = (req, store) => {
       <div id="root">${reactMarkup}</div>
       <script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState()).replace(/</g, '\\u003c')};</script>
       <script src="main.js"></script>
+      ${reloadScript}
     </body>
   </html>
   `;

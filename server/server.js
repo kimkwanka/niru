@@ -4,8 +4,6 @@ import http from 'http';
 import express from 'express';
 import path from 'path';
 
-import reload from 'reload';
-
 import serverSideRendering from './serverSideRendering';
 
 const PORT = process.env.PORT || 8080;
@@ -31,10 +29,15 @@ if (isDev) {
 
   // Serve static assets from static src folder
   app.use(express.static(path.resolve(__dirname, '../src/static')));
+
+  // Use 'reload' to refresh browser on server changes in dev mode
+  const reload = require('reload');
+  reload(app);
 }
 
 // Serve static assets from build folder
 app.use(express.static(path.resolve(__dirname, '../dist')));
+
 
 // Server side rendering of React pages
 app.use('*', serverSideRendering);
@@ -49,5 +52,3 @@ const server = http.createServer(app);
 server.listen(PORT, () => {
   console.log(`Express server running at ${PORT} in ${process.env.NODE_ENV || 'dev'} mode`);
 });
-
-reload(app);
