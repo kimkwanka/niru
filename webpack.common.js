@@ -23,6 +23,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  output: {
+    publicPath: '/',
+  },
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
