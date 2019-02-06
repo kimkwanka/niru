@@ -33,7 +33,7 @@
   },
   "scripts": {
     "build": "webpack --config webpack.prod.js",
-    "dev": "nodemon --watch server --exec babel-node server/server.js"
+    "dev": "nodemon --watch server -e js,jsx --exec babel-node server/server.js"
   },
   "dependencies": {
     "@babel/node": "^7.2.2",
