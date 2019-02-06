@@ -1,7 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
+
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 import Home from '../Home/Home';
 import About from '../About/About';
@@ -18,24 +21,13 @@ const App = () => (
           { name: 'description', content: 'Universal fullstack boilerplate' },
         ]}
       />
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/styleguide">Styleguide</Link>
-          </li>
-        </ul>
-      </nav>
+      <Header />
       <main className="page-content relative overflow-hidden">
         <Route path="/" exact component={Home} />
         <Route path="/about" component={About} />
         <Route path="/styleguide" component={Styleguide} />
       </main>
+      <Footer />
     </div>
   </Router>
 );
