@@ -1,12 +1,16 @@
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const PurifyCSSPlugin = require('purifycss-webpack');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
-const common = require('./webpack.common.js');
 
 const path = require('path');
 const glob = require('glob');
+
+const common = require('./webpack.common.js');
+
+const PATHS = {
+  src: path.join(__dirname, 'src'),
+};
 
 module.exports = merge(common, {
   mode: 'production',
@@ -16,13 +20,8 @@ module.exports = merge(common, {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    new PurifyCSSPlugin({
-      paths: glob.sync(path.join(__dirname, '/src/components/**/*.jsx'), { nodir: true }),
-      minimize: true,
-      purifyOptions: {
-        info: true,
-        rejected: false,
-      },
+    new PurgecssPlugin({
+      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
     }),
   ],
   module: {
