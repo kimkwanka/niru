@@ -24,10 +24,10 @@ const mainJS = (process.env.NODE_ENV !== 'production') ? 'main.js' : `/${webpack
 const vendorsCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="/${webpackAssets.vendors.css}">`;
 const mainCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="/${webpackAssets.main.css}">`;
 
-const renderPage = (req, store) => {
+const renderPage = (req, store, routerContext) => {
   const reactMarkup = renderToString(
     <Provider store={store}>
-      <StaticRouter context={{}} location={req.originalUrl}>
+      <StaticRouter context={routerContext} location={req.originalUrl}>
         <App />
       </StaticRouter>
     </Provider>,
@@ -69,8 +69,14 @@ export default (req, res, next) => {
   };
   const state = { user };
   const store = createStore(reducers, state);
+  const routerContext = {};
 
-  res.set('Content-Type', 'text/html')
-    .status(200)
-    .end(renderPage(req, store));
+  const pageToRender = renderPage(req, store, routerContext);
+
+  // If the NotFound404 component got rendered and therefore set context status to 404
+  // we need to change the response status accordingly
+  if (routerContext.status === 404) {
+    res.status(404);
+  }
+  res.send(pageToRender);
 };
