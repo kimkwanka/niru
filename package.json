@@ -5,6 +5,11 @@
   "repository": "git@github.com:kimkwanka/reniru.git",
   "author": "Kim Kwanka <kimkwanka@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "dev": "nodemon --watch server -e js,jsx --exec babel-node server/server.js",
+    "start": "yarn run build && NODE_ENV=production nodemon --watch server -e js,jsx --exec babel-node server/server.js"
+  },
   "devDependencies": {
     "eslint": "^5.13.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -15,11 +20,6 @@
     "reload": "^2.4.0",
     "webpack-dev-middleware": "^3.5.2",
     "webpack-hot-middleware": "^2.24.3"
-  },
-  "scripts": {
-    "build": "webpack --config webpack.prod.js",
-    "dev": "nodemon --watch server -e js,jsx --exec babel-node server/server.js",
-    "start": "yarn run build && NODE_ENV=production nodemon --watch server -e js,jsx --exec babel-node server/server.js"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
