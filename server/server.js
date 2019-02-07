@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 import http from 'http';
 import express from 'express';
+import bodyParser from 'body-parser';
 import path from 'path';
 
 import serverSideRendering from './serverSideRendering';
@@ -10,6 +11,9 @@ const PORT = process.env.PORT || 8080;
 const isDev = process.env.NODE_ENV !== 'production';
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 if (isDev) {
   const webpackDevMiddleware = require('webpack-dev-middleware');

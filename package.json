@@ -39,6 +39,7 @@
     "@babel/node": "^7.2.2",
     "assets-webpack-plugin": "^3.9.7",
     "autoprefixer": "^9.4.7",
+    "body-parser": "^1.18.3",
     "copy-webpack-plugin": "^4.6.0",
     "cssnano": "^4.1.8",
     "express": "^4.16.4",
