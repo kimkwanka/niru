@@ -1,7 +1,7 @@
+/* eslint-disable global-require */
 /* eslint-disable no-underscore-dangle */
 /* global window */
 import { createStore, applyMiddleware, compose } from 'redux';
-import logger from 'redux-logger';
 
 import reducers from './reducers';
 
@@ -22,6 +22,7 @@ const getHydratedStore = () => {
   const middleware = [];
   if (process.env.NODE_ENV !== 'production') {
     // Add any Redux middleware we might have when not in production:
+    const logger = require('redux-logger');
     middleware.push(logger);
   }
 
