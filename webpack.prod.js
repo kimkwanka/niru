@@ -8,9 +8,12 @@ const glob = require('glob');
 
 const common = require('./webpack.common.js');
 
-const PATHS = {
-  src: path.join(__dirname, 'src'),
-};
+const clientSrcFiles = path.join(__dirname, '/src/**/*.@(js|jsx)');
+const serverSrcFiles = path.join(__dirname, '/server/**/*.@(js|jsx)');
+const purgePaths = [].concat(
+  glob.sync(clientSrcFiles, { nodir: true }),
+  glob.sync(serverSrcFiles, { nodir: true }),
+);
 
 module.exports = merge(common, {
   mode: 'production',
@@ -21,7 +24,7 @@ module.exports = merge(common, {
       chunkFilename: '[id].css',
     }),
     new PurgecssPlugin({
-      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+      paths: purgePaths,
     }),
   ],
   module: {

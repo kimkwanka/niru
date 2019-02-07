@@ -20,6 +20,7 @@ const renderPage = (req, store) => {
 
   const helmet = Helmet.renderStatic();
 
+  const cssFile = (process.env.NODE_ENV !== 'production') ? '' : '<link rel="stylesheet" href="main.css">';
   const reloadScript = (process.env.NODE_ENV !== 'production') ? '<script src="/reload/reload.js"></script> ' : '';
 
   return `
@@ -32,11 +33,12 @@ const renderPage = (req, store) => {
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
       ${helmet.link.toString()}
+      ${cssFile}
     </head>
     <body>
       <div id="root">${reactMarkup}</div>
       <script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState()).replace(/</g, '\\u003c')};</script>
-      <script src="main.js"></script>
+      <script src="/main.js"></script>
       ${reloadScript}
     </body>
   </html>

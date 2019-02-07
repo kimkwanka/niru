@@ -38,7 +38,6 @@ if (isDev) {
 // Serve static assets from build folder
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
-
 // Server side rendering of React pages
 app.use('*', serverSideRendering);
 
