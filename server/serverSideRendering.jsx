@@ -21,8 +21,8 @@ const runtimeJS = (process.env.NODE_ENV !== 'production') ? 'runtime.js' : `/${w
 const vendorsJS = (process.env.NODE_ENV !== 'production') ? 'vendors.js' : `/${webpackAssets.vendors.js}`;
 const mainJS = (process.env.NODE_ENV !== 'production') ? 'main.js' : `/${webpackAssets.main.js}`;
 
-const vendorsCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="/${webpackAssets.vendors.css}">;`;
-const mainCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="/${webpackAssets.main.css}">;`;
+const vendorsCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="/${webpackAssets.vendors.css}">`;
+const mainCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="/${webpackAssets.main.css}">`;
 
 const renderPage = (req, store) => {
   const reactMarkup = renderToString(
