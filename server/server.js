@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import path from 'path';
 
 import serverSideRendering from './serverSideRendering';
+import api from './api';
 
 const PORT = process.env.PORT || 8080;
 const isDev = process.env.NODE_ENV !== 'production';
@@ -41,6 +42,9 @@ if (isDev) {
 
 // Serve static assets from build folder
 app.use(express.static(path.resolve(__dirname, '../dist')));
+
+// Example api route
+api(app);
 
 // Server side rendering of React pages
 app.use('*', serverSideRendering);
