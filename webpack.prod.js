@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const path = require('path');
@@ -18,6 +19,7 @@ const purgePaths = [].concat(
 module.exports = merge(common, {
   mode: 'production',
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([{ from: path.join(__dirname, '/src/static'), to: path.join(__dirname, '/dist') }]),
     new MiniCssExtractPlugin({
       filename: '[name].css',
