@@ -4,11 +4,13 @@ import http from 'http';
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
+import ip from 'ip';
 
 import serverSideRendering from './serverSideRendering';
 import api from './api';
 
 const PORT = process.env.PORT || 8080;
+const serverIP = ip.address();
 const isDev = process.env.NODE_ENV !== 'production';
 
 const app = express();
@@ -57,5 +59,7 @@ app.get('*', (req, res) => {
 const server = http.createServer(app);
 
 server.listen(PORT, () => {
-  console.log(`Express server running at ${PORT} in ${process.env.NODE_ENV || 'dev'} mode`);
+  console.log(`\nExpress server running in ${process.env.NODE_ENV || 'development'} mode`);
+  console.log(`Local:            http://localhost:${PORT}/`);
+  console.log(`On Your Network:  http://${serverIP}:${PORT}/\n`);
 });
