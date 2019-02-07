@@ -27,7 +27,7 @@ const mainCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="style
 const renderPage = (req, store) => {
   const reactMarkup = renderToString(
     <Provider store={store}>
-      <StaticRouter context={{}} location={req.url}>
+      <StaticRouter context={{}} location={req.originalUrl}>
         <App />
       </StaticRouter>
     </Provider>,

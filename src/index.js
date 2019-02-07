@@ -12,7 +12,7 @@ import store from './store';
 import './stylus/style.styl';
 
 const render = (Component) => {
-  ReactDOM.render(
+  ReactDOM.hydrate(
     <Provider store={store}>
       <BrowserRouter>
         <Component />
