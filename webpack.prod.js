@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const AssetsPlugin = require('assets-webpack-plugin');
 
 const path = require('path');
 const glob = require('glob');
@@ -22,11 +23,14 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([{ from: path.join(__dirname, '/src/static'), to: path.join(__dirname, '/dist') }]),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      filename: '[name].[contenthash].css',
     }),
     new PurgecssPlugin({
       paths: purgePaths,
+    }),
+    new AssetsPlugin({
+      fullPath: false,
+      path: path.join(__dirname, 'dist'),
     }),
   ],
   module: {
@@ -53,5 +57,8 @@ module.exports = merge(common, {
         ],
       },
     ],
+  },
+  output: {
+    filename: '[name].[contenthash].js',
   },
 });

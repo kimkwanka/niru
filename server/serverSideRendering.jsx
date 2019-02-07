@@ -9,6 +9,21 @@ import App from '../src/components/App/App';
 
 import reducers from '../src/reducers';
 
+const fs = require('fs');
+
+let webpackAssets = null;
+
+if (process.env.NODE_ENV === 'production') {
+  webpackAssets = JSON.parse(fs.readFileSync('./dist/webpack-assets.json', 'utf8'));
+}
+
+const runtimeJS = (process.env.NODE_ENV !== 'production') ? 'runtime.js' : `/${webpackAssets.runtime.js}`;
+const vendorsJS = (process.env.NODE_ENV !== 'production') ? 'vendors.js' : `/${webpackAssets.vendors.js}`;
+const mainJS = (process.env.NODE_ENV !== 'production') ? 'main.js' : `/${webpackAssets.main.js}`;
+
+const vendorsCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="/${webpackAssets.vendors.css}">;`;
+const mainCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="/${webpackAssets.main.css}">;`;
+
 const renderPage = (req, store) => {
   const reactMarkup = renderToString(
     <Provider store={store}>
@@ -20,7 +35,6 @@ const renderPage = (req, store) => {
 
   const helmet = Helmet.renderStatic();
 
-  const cssFile = (process.env.NODE_ENV !== 'production') ? '' : '<link rel="stylesheet" href="main.css">';
   const reloadScript = (process.env.NODE_ENV !== 'production') ? '<script src="/reload/reload.js"></script> ' : '';
 
   return `
@@ -33,12 +47,15 @@ const renderPage = (req, store) => {
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
       ${helmet.link.toString()}
-      ${cssFile}
+      ${vendorsCSS}
+      ${mainCSS}
     </head>
     <body>
       <div id="root">${reactMarkup}</div>
       <script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState()).replace(/</g, '\\u003c')};</script>
-      <script src="/main.js"></script>
+      <script src="${runtimeJS}"></script>
+      <script src="${vendorsJS}"></script>
+      <script src="${mainJS}"></script>
       ${reloadScript}
     </body>
   </html>

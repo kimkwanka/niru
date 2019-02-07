@@ -1046,6 +1046,17 @@ assert@^1.1.1:
   dependencies:
     util "0.10.3"
 
+assets-webpack-plugin@^3.9.7:
+  version "3.9.7"
+  resolved "https://registry.yarnpkg.com/assets-webpack-plugin/-/assets-webpack-plugin-3.9.7.tgz#0c3c13632cc4490b2ef79fd0bbb16c69a724f364"
+  integrity sha512-yxo4MlSb++B88qQFE27Wf56ykGaDHZeKcSbrstSFOOwOxv33gWXtM49+yfYPSErlXPAMT5lVy3YPIhWlIFjYQw==
+  dependencies:
+    camelcase "^5.0.0"
+    escape-string-regexp "^1.0.3"
+    lodash.assign "^4.2.0"
+    lodash.merge "^4.6.1"
+    mkdirp "^0.5.1"
+
 assign-symbols@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/assign-symbols/-/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
@@ -2488,7 +2499,7 @@ escape-html@~1.0.3:
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
 
-escape-string-regexp@^1.0.5:
+escape-string-regexp@^1.0.3, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
@@ -4013,6 +4024,11 @@ locate-path@^3.0.0:
   dependencies:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
+
+lodash.assign@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
+  integrity sha1-DZnzzNem0mHRm9rrkkUAXShYCOc=
 
 lodash.clonedeep@^4.5.0:
   version "4.5.0"

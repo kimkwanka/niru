@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   module: {
     rules: [
@@ -10,10 +12,25 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.HashedModuleIdsPlugin(),
+  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   output: {
     publicPath: '/',
+  },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
 };
