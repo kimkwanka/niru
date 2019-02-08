@@ -4,30 +4,55 @@ import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { Helmet } from 'react-helmet';
+import * as fs from 'fs';
 
 import App from '../src/components/App/App';
 
 import reducers from '../src/reducers';
 
-const fs = require('fs');
+// We need to setup our server rendered React markup differently depending on the current mode:
 
-let webpackAssets = null;
+// In development mode, we can use simple bundle filenames
+// and don't need to insert CSS <style> tags since webpack inlines CSS anyway.
+
+// Furthermore, we use the 'reload' package to automatically refresh the browser
+// whenever 'nodemon' restarts the express server.
+
+let runtimeJS = 'runtime.js';
+let vendorsJS = 'vendors.js';
+let mainJS = 'main.js';
+
+let vendorsCSS = '';
+let mainCSS = '';
+
+let reloadScript = '<script src="/reload/reload.js"></script>';
+
+// In production on the other hand, we need to use [name].[contenthash].* bundle filenames
+// so cached assets get automatically invalidated whenever their content changes.
+// (We can extract these filenames from 'webpack-assets.json' to insert them into our React markup.)
+
+// Also, we now need to insert style tags for the CSS
+// and don't reload the browser on server restart.
 
 if (process.env.NODE_ENV === 'production') {
-  webpackAssets = JSON.parse(fs.readFileSync('./dist/webpack-assets.json', 'utf8'));
+  const webpackAssets = JSON.parse(
+    fs.readFileSync('./dist/webpack-assets.json', 'utf8'),
+  );
+
+  runtimeJS = `/${webpackAssets.runtime.js}`;
+  vendorsJS = `/${webpackAssets.vendors.js}`;
+  mainJS = `/${webpackAssets.main.js}`;
+
+  vendorsCSS = `<link rel="stylesheet" href="/${webpackAssets.vendors.css}">`;
+  mainCSS = `<link rel="stylesheet" href="/${webpackAssets.main.css}">`;
+
+  reloadScript = '';
 }
 
-const runtimeJS = (process.env.NODE_ENV !== 'production') ? 'runtime.js' : `/${webpackAssets.runtime.js}`;
-const vendorsJS = (process.env.NODE_ENV !== 'production') ? 'vendors.js' : `/${webpackAssets.vendors.js}`;
-const mainJS = (process.env.NODE_ENV !== 'production') ? 'main.js' : `/${webpackAssets.main.js}`;
-
-const vendorsCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="/${webpackAssets.vendors.css}">`;
-const mainCSS = (process.env.NODE_ENV !== 'production') ? '' : `<link rel="stylesheet" href="/${webpackAssets.main.css}">`;
-
-const renderPage = (req, store, routerContext) => {
+const renderPage = (url, store, routerContext) => {
   const reactMarkup = renderToString(
     <Provider store={store}>
-      <StaticRouter context={routerContext} location={req.originalUrl}>
+      <StaticRouter context={routerContext} location={url}>
         <App />
       </StaticRouter>
     </Provider>,
@@ -35,7 +60,10 @@ const renderPage = (req, store, routerContext) => {
 
   const helmet = Helmet.renderStatic();
 
-  const reloadScript = (process.env.NODE_ENV !== 'production') ? '<script src="/reload/reload.js"></script> ' : '';
+  // Insert the sample store's state for client side store hydration
+  const initialState = JSON.stringify(
+    store.getState(),
+  ).replace(/</g, '\\u003c');
 
   return `
   <!DOCTYPE html>
@@ -52,7 +80,8 @@ const renderPage = (req, store, routerContext) => {
     </head>
     <body>
       <div id="root">${reactMarkup}</div>
-      <script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState()).replace(/</g, '\\u003c')};</script>
+      <script>window.__INITIAL_STATE__ = ${initialState};
+      </script>
       <script src="${runtimeJS}"></script>
       <script src="${vendorsJS}"></script>
       <script src="${mainJS}"></script>
@@ -62,21 +91,27 @@ const renderPage = (req, store, routerContext) => {
   `;
 };
 
-export default (req, res, next) => {
+export default (req, res) => {
+  // Create a Redux store with some sample data to hydrate the client side with
   const user = {
     name: 'Hydrator',
     authenticated: true,
   };
   const state = { user };
   const store = createStore(reducers, state);
+
+  // Empty context to be filled by StaticRouter
   const routerContext = {};
 
-  const pageToRender = renderPage(req, store, routerContext);
+  // Render the requested page
+  const pageToRender = renderPage(req.originalUrl, store, routerContext);
 
-  // If the NotFound404 component got rendered and therefore set context status to 404
-  // we need to change the response status accordingly
+  // If the context status is 404 it means we couldn't find the requested page and had to render
+  // our custom 404 page (NotFound404) instead.
+  // That's why we set the response status to 404 accordingly in this case.
   if (routerContext.status === 404) {
     res.status(404);
   }
+  // Regardless of 404 or not, send over the rendered page
   res.send(pageToRender);
 };
