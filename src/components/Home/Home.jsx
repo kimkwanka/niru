@@ -29,7 +29,9 @@ const Home = ({ user }) => (
     </h4>
     <div className="flex-column items-center margin-top-big">
       <input type="text" defaultValue={user.name} onChange={handleNameChange} />
-      <button type="button" className="margin-top-small button--accent" onClick={handleToggleClick}>Toggle Authenticated</button>
+      <button type="button" className="margin-top-small button--accent" onClick={handleToggleClick}>
+        Toggle Authenticated
+      </button>
     </div>
   </div>
 );

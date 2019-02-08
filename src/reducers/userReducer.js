@@ -1,7 +1,10 @@
-const user = (state = {
-  name: 'default_username',
-  authenticated: false,
-}, action) => {
+const user = (
+  state = {
+    name: 'default_username',
+    authenticated: false,
+  },
+  action,
+) => {
   switch (action.type) {
     case 'TOGGLE_AUTHENTICATED': {
       const newState = { ...state };
