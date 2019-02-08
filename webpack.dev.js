@@ -13,7 +13,7 @@ module.exports = merge(common, {
   ],
   devServer: {
     hot: true,
-    contentBase: path.join(__dirname, 'src/static'),
+    contentBase: path.join(__dirname, 'public'),
   },
   module: {
     rules: [

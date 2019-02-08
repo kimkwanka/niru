@@ -21,7 +21,7 @@ module.exports = merge(common, {
   mode: 'production',
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new CopyWebpackPlugin([{ from: path.join(__dirname, '/src/static'), to: path.join(__dirname, '/dist') }]),
+    new CopyWebpackPlugin([{ from: path.join(__dirname, 'public'), to: path.join(__dirname, '/dist') }]),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
