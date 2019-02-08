@@ -34,15 +34,15 @@ if (isDev) {
   );
   app.use(webpackHotMiddleware(compiler));
 
-  // Serve static assets from public folder (images, etc.)
-  app.use(express.static(path.resolve(__dirname, '../public')));
-
   // Use 'reload' to refresh browser on server changes in dev mode
   const reload = require('reload');
   reload(app);
 }
 
-// Serve static assets from build folder (webpack bundles)
+// Serve static assets from the public folder (images, etc.)
+app.use(express.static(path.resolve(__dirname, '../public')));
+
+// Serve static assets from the build folder (webpack bundles)
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 // Example api route
