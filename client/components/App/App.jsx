@@ -1,6 +1,5 @@
 import React from 'react';
 import Helmet from 'react-helmet';
-import { Switch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { hot } from 'react-hot-loader/root';
 
@@ -21,9 +20,7 @@ const App = () => (
     />
     <Header />
     <main className="page-content relative overflow-hidden">
-      <Switch>
-        {renderRoutes(routes)}
-      </Switch>
+      {renderRoutes(routes)}
     </main>
     <Footer />
   </div>
