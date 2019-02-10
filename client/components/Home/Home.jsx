@@ -14,7 +14,10 @@ const handleNameChange = (e) => {
   renameUser(newName);
 };
 
-const Home = ({ user }) => (
+// Additionally export the undecorated <Home /> itself for easier testing.
+// (https://redux.js.org/recipes/writing-tests#connected-components)
+
+export const Home = ({ user }) => (
   <div className="container margin-top-small">
     <Helmet title="Home" />
     <h1>Home</h1>
