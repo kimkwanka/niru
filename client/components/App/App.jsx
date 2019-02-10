@@ -8,7 +8,7 @@ import Footer from './Footer/Footer';
 
 import routes from '../../routes';
 
-export const App = () => (
+const App = () => (
   <div className="App">
     <Helmet
       htmlAttributes={{ lang: 'en' }}
