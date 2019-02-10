@@ -6,9 +6,9 @@ import { createStore } from 'redux';
 import { Helmet } from 'react-helmet';
 import * as fs from 'fs';
 
-import App from '../src/components/App/App';
+import App from '../client/components/App/App';
 
-import reducers from '../src/reducers';
+import reducers from '../client/reducers';
 
 // We need to setup our server rendered React markup differently depending on the current mode:
 

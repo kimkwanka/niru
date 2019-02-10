@@ -9,7 +9,7 @@ const glob = require('glob');
 
 const common = require('./webpack.common.js');
 
-const clientSrcFiles = path.join(__dirname, '/src/**/*.@(js|jsx)');
+const clientSrcFiles = path.join(__dirname, '/client/**/*.@(js|jsx)');
 const serverSrcFiles = path.join(__dirname, '/server/**/*.@(js|jsx)');
 const purgePaths = [].concat(
   glob.sync(clientSrcFiles, { nodir: true }),
@@ -18,6 +18,9 @@ const purgePaths = [].concat(
 
 module.exports = merge(common, {
   mode: 'production',
+  entry: [
+    path.resolve(__dirname, 'client/index.js'),
+  ],
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new MiniCssExtractPlugin({

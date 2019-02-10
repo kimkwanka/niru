@@ -9,7 +9,7 @@ module.exports = merge(common, {
   // and webpack-hot-middleware. HMR with webpack-dev-server works fine without it.
   entry: [
     'webpack-hot-middleware/client',
-    path.resolve(__dirname, 'src/index.js'),
+    path.resolve(__dirname, 'client/index.js'),
   ],
   devServer: {
     hot: true,
