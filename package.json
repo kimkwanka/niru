@@ -25,6 +25,7 @@
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.3",
     "reload": "^2.4.0",
+    "supertest": "^3.4.2",
     "webpack-dev-middleware": "^3.5.2",
     "webpack-hot-middleware": "^2.24.3"
   },

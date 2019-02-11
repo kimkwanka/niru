@@ -1,5 +1,4 @@
 /* eslint-disable global-require */
-
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
@@ -7,7 +6,7 @@ import path from 'path';
 import serverSideRendering from './serverSideRendering';
 import api from './api';
 
-const isDev = process.env.NODE_ENV !== 'production';
+const isDev = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
 
 const app = express();
 
