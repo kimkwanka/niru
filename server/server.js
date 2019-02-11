@@ -46,7 +46,7 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 // Example api route
-api(app);
+app.get('/api', api);
 
 // Server side rendering of React pages
 app.use('*', serverSideRendering);
