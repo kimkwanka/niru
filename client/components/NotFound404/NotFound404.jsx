@@ -3,7 +3,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
-const NotFound404 = ({ staticContext = {} }) => {
+const NotFound404 = ({ staticContext }) => {
   // Set StaticRouter context status to 404 to let the server know
   staticContext.status = 404;
 
