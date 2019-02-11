@@ -28,9 +28,17 @@ describe('<Home /> - Shallow render undecorated component', () => {
     const wrapper = shallow(<Home {...{ user, dispatch }} />);
     expect(wrapper.find('h4 span').at(0).text()).toBe(' TestUsername');
   });
-  it('renders the user authentication status', () => {
+  it('renders the user authentication status: true', () => {
     const wrapper = shallow(<Home {...{ user, dispatch }} />);
     expect(wrapper.find('h4 span').at(1).text()).toBe(' true');
+  });
+  it('renders the user authentication status: false', () => {
+    const falseUser = {
+      name: 'TestUsername',
+      authenticated: false,
+    };
+    const wrapper = shallow(<Home user={falseUser} dispatch={dispatch} />);
+    expect(wrapper.find('h4 span').at(1).text()).toBe(' false');
   });
 });
 
