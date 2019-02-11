@@ -43,12 +43,7 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 // Example api route
 app.get('/api', api);
 
-// Server side rendering of React pages
+// Server side rendering of React pages and 404s
 app.get('*', serverSideRendering);
-
-// 404
-app.get('*', (req, res) => {
-  res.status(404).end();
-});
 
 export default app;
