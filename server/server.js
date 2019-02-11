@@ -49,7 +49,7 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 app.get('/api', api);
 
 // Server side rendering of React pages
-app.use('*', serverSideRendering);
+app.get('*', serverSideRendering);
 
 // 404
 app.get('*', (req, res) => {
