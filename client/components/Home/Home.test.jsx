@@ -63,23 +63,23 @@ describe('<Home /> - Mount Redux connected component', () => {
   });
 
   it('handles input change', () => {
-    expect(store.getActions().length).toBe(0);
     wrapper.find('input').simulate('change', {
-      target: { value: 'NewUserName' },
+      target: { value: 'NewUsername' },
     });
-    expect(store.getActions().length).toBe(1);
-    expect(store.getActions()[0]).toEqual({
+    const actions = store.getActions();
+    const expectedAction = {
       type: 'RENAME_USER',
-      name: 'NewUserName',
-    });
+      name: 'NewUsername',
+    };
+    expect(actions).toEqual([expectedAction]);
   });
 
   it('handles clicks', () => {
-    expect(store.getActions().length).toBe(0);
     wrapper.find('button').simulate('click');
-    expect(store.getActions().length).toBe(1);
-    expect(store.getActions()[0]).toEqual({
+    const actions = store.getActions();
+    const expectedAction = {
       type: 'TOGGLE_AUTHENTICATED',
-    });
+    };
+    expect(actions).toEqual([expectedAction]);
   });
 });
