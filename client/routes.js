@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default */
+// (https://github.com/benmosher/eslint-plugin-import/issues/544#issuecomment-244976007)
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import Styleguide from './components/Styleguide/Styleguide';
