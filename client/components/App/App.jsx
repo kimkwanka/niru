@@ -12,7 +12,7 @@ const App = () => (
   <div className="App">
     <Helmet
       htmlAttributes={{ lang: 'en' }}
-      titleTemplate="reniru | %s"
+      titleTemplate="niru | %s"
       titleAttributes={{ itemprop: 'name', lang: 'en' }}
       meta={[
         { name: 'description', content: 'Universal fullstack boilerplate' },
