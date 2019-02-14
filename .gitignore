@@ -42,3 +42,7 @@ sessions
 .directory
 
 webpack-assets.json
+
+# Test snapshots
+__snapshots__/
+*.snap
