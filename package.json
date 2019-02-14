@@ -10,8 +10,16 @@
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
     "build": "webpack --config webpack.prod.js",
-    "dev": "nodemon --watch server -e js,jsx --exec babel-node server/server.js",
-    "start": "yarpm run build && NODE_ENV=production nodemon --watch server -e js,jsx --exec babel-node server/server.js"
+    "dev": "nodemon --exec babel-node server/server.js",
+    "start": "yarpm run build && NODE_ENV=production nodemon --exec babel-node server/server.js"
+  },
+  "nodemonConfig": {
+    "ignore": ["client/*/"],
+    "watch": [
+      "client",
+      "server"
+    ],
+    "ext": "js,jsx"
   },
   "devDependencies": {
     "babel-jest": "^24.1.0",
