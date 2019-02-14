@@ -1,6 +1,11 @@
 # niru
 Universal / isomorphic fullstack boilerplate with React, React-Router, React-Redux and more!
 
+# Attention!
+Niru has been rewritten from the ground up and even though it is pretty similar to the old version, there's still quite a few differences.
+
+So if you're looking for the old version you can find it here: [niruV1](https://github.com/kimkwanka/niruV1).
+
 ## What is niru?
 Niru (*japanese: 'to boil'*) is a somewhat opinionated React boilerplate to make app creation as fast as possible.
 
@@ -9,17 +14,19 @@ Although primarily written for my own needs I want to share it so people can use
 Unlike most boilerplates it comes with its own 2 mini CSS frameworks to not only make apps look pleasing right from the beginning but also leverage functional / atomic css to speed up development.
 
 ### Main Features
++ Minimal Webpack V4 config
 + State management via React Redux (with prehydrated store)
 + Uses Redux devtools if installed and logs state changes to console (in development mode)
-+ Action creators are prebound to dispatch()
 + Routing via React-Router V4
 + Server side rendering
-+ Hot reloading (redux state preserving) on client and server side
++ Hot module reloading (redux state preserving) on client side
++ Express server automatically restarts on changes and reloads browser (in development mode)
++ Unit tests and coverage via Jest, Enzyme and Supertest
 + Dynamic document ```<head>``` via React-Helmet
-+ Able to use 'preact' instead of 'React' by just changing a variable
 + Automatic cache invalidation via use of hash based bundle filenames
 + AirBnB ESLint profile for use with your favorite Code Editor's ESLint plugin
 + ES6 on the server side
++ Custom favicon.ico and 404 page
 + A sticky footer :)
 
 ### CSS Features:
@@ -30,110 +37,139 @@ Unlike most boilerplates it comes with its own 2 mini CSS frameworks to not only
 + 'Sutairu' - minimalistic CSS framework based on http://milligram.io/
 + 'Atomiku' - functional CSS framework inspired by http://tachyons.io/
 + Easily extendable and customizable via variables
-+ [PurifyCSS](https://github.com/purifycss/purifycss) (custom fork) to remove all unused CSS classes from your .css.
++ [Purgecss](https://github.com/FullHuman/purgecss) to remove all unused CSS classes from your .css.
 
 ## Installation
-It is recommended to use [yarn](https://yarnpkg.com/lang/en/) for package management instead of npm. 
-
-So assuming you have cloned the niru repository and got yarn installed, 'cd' into the niru directory and type:
+Assuming you have cloned the niru repository 'cd' into the niru directory and type either
 ```
 yarn
 ```
-to install all the dependencies.
+or
+```
+npm install
+```
+depending on your prefered package manager to install all dependencies.  
 ## Development mode
 To run niru in development mode:
 ```
 yarn dev
 ```
-Open your browser on ```localhost:8080``` to see the running app.
+or
+```
+npm run dev
+```
+##### (Note that the use of ```run``` is NOT optional here)
+### Accessing the app locally or on your network
+When started, the server will output 2 urls to access the running app:
+```
+Express server running in development mode
+Local:            http://localhost:8080/
+On Your Network:  http://192.168.1.6:8080/    <------ JUST AN EXAMPLE!!!!
+
+```
+(Note that the second one above is just a sample and will look differently on your machine.)
+  
+
+Open your browser on either ```http://localhost:8080/``` or the one that looks similar to ```http://192.168.1.6:8080/``` to see the running app.
+The second url can be opened on any machine / mobile / whatever on your local network. This can be pretty handy to test the app on a variety of devices / OSes.
 ## Production mode
-To run niru in production mode:
+To run niru in production mode use either
 ```
-yarn build:start
+yarn start
 ```
-This will first build all assets and then run the server.
+or
+```
+npm start
+```
+This will clean the ```./dist``` folder, build all assets and then run the express server.
+  
+
 By default niru will run on ```localhost:8080``` even in production. To change the production port, you need to provide an
-environment variable ```PORT``` or just edit the following line in ```/src/server/index.js``` directly:
+environment variable ```PORT``` or just edit the following line in ```./server/server.js``` directly:
 ```
 const PORT = process.env.PORT || 8080; // Change to whatever you want!
 ```
 ## Build only
-To build for production without running:
+To only build for production without running:
 ```
 yarn build
 ```
-## Start only
-To start the server in production mode after everything was built using ```yarn build```:
+or
 ```
-yarn start
+npm run build
 ```
-### Notes on deployment on Heroku
-By default heroku just runs "yarn start" after installing the dependencies but as you have seen before, doing so just runs the server without building the assets.
-Although one could include the build step into the "yarn start" script it would mean that each time your app is starting up from heroku's "hibernation", it would also run the lengthy build step again. Apart from making your app take longer to start up this can also lead to a memory issue that makes your app unable to even start up.
-Therefore, for deployment on heroku a ```heroku-postbuild``` script is included which automatically builds all the assets after installing the dependencies. This way everything is already built and ready to be run, even after hibernation.
-## Other commands
-The ```dev``` and ```build``` commands can also be used to only start / build either client or server side like:
+## Testing
+### Where is the test folder, where are the snapshots?
+Following the idea to group files _by domain_ there is neither a tests or snapshots folder. Instead the test and snapshot files are directly grouped with their corresponding source file.
+#### Example
 ```
-yarn dev:client
+    ...
+    ├── Home                         # <Home /> component folder
+    │        Home.jsx                # Source file
+    │        Home.test.jsx           # Test file
+    │        Home.test.jsx.snap      # Snapshot file
+    ...
 ```
+### Run tests once
+To run all included tests once and show code coverage:
 ```
-yarn dev:server
+yarn test
 ```
+or
 ```
-yarn build:client
+npm test
 ```
+(Add ```--verbose``` to show each individual test's output.)
+### Run tests continuously
+To run all included tests continuously, rerunning them automatically when test files change:
 ```
-yarn build:server
+yarn test:watch
 ```
-But most of the time you shouldn't need those.
+or
+```
+npm test:watch
+```
+
 
 ## How to use niru
 ### Folder structure
     .
-    ├── ...
-    ├── src                     
-    │   ├── assets              # Images, etc.
-    │   ├── client              
-    │   │   ├── actions         # Redux action creators
-    │   │   ├── components      # React components
-    │   │   │   └── shared      # Shared React components like <Header />
-    │   │   ├── reducers        # Redux reducers
-    │   │   └── style           # Stylus files + CSS frameworks
-    │   │   index.js            # Client entry point
-    │   │   App.jsx             # Main app component
-    │   ├── server              
-    │   │   index.js            # Server entry point
-    │   │   reactRoutes.js      # Server side rendering
-    │   │   server.js           # Main server file
-    │   └── shared              # Code shared by client and server
+    ├── client                  # Client source files
+    │   ├── actions             # Redux action creators
+    │   ├── components          # React components
+    │   ├── reducers            # Redux reducers
+    |   └── stylus              # Stylus files + CSS frameworks
+    │       index.js            # Client entry point
     │       routes.js           # React-Router route definitions
     │       store.js            # Redux store
+    |
+    ├── public                  # Static assets like images, favicon.ico, etc.
+    |
+    ├── server                  # Server source files
     ...
-### The mysterious /dist folder and assets
-The ```/dist``` folder gets automatically deleted and recreated when starting niru so you should never put files in there manually. If you want to add assets like images, etc. put them into ```/src/assets``` and restart niru if it is running. This will recreate the ```/dist``` folder and copy the assets into the correct folder for serving. Assets are then accessible at ```/``` in your app. So if say you added ```lolcat.jpg``` you could use it like 
+
+### The mysterious /dist folder and static assets
+Even though its contents are served by the server, the ```/dist``` folder gets automatically deleted and recreated when starting niru. That's why you should never put files in there manually. If you want to add static assets like images, etc. put them into ```./public``` instead and restart niru if it is running. Assets are then accessible at ```/``` in your app. 
+
+So if say you added ```lolcat.jpg``` you could use it like 
 ```
 <img src="/lolcat.jpg" />
 ```
 in your code / CSS.
-If you create subfolders in ```/assets``` they will be preserved.
+If you create subfolders in ```./public``` they will be preserved.
 
 ### Adding a new page
 Niru uses a ```routes.js``` file to define all routes that are used. So in order to hook up any new page components you create you will have to add it to routes.js. Just take a look how the default pages are used in that file and do the same for your new page.
-Be sure to also add a link to your page in ```Header.jsx``` inside ```/src/client/components/shared``` or you'd have to manually type in the url in order to see it.
-
-**Note:**
-If you add a page to routes.js while ```yarn dev``` is running you will have to restart it for the server side to catch up with the changes.
+Be sure to also add a link to your page in ```Header.jsx``` inside ```./client/components/App/Header/``` or you'd have to manually type in the url in order to see it.
 
 ### Express server routing flow
-Niru's express server first tries to resolve any routes as a React-Router route. If the route is defined in ```routes.js``` the appropriate
-React component page will be rendered on the server and served as HTML. 
+Niru's express server will try to resolve any requests in this order:
+1. Static assets in ```./public``` or ```./dist```
+2. ```/api``` sample route
+3. React Router routes defined in ```./client/routes.js```
+3. 404 for everything else
 
-If you however requested ```/api``` for example which is not defined in there, ```reactRoutes.jsx``` middleware will pass
-on the request via ```next()``` so that express can try to find another matching middleware / route to fulfill the request. 
-To try this out I added a really simple example API in ```api.js``` that can be accessed on ```/api```.
-If you want to add your own API just edit ```api.js``` or replace it with something more fitting for your needs.
-
-When the route is neither defined in ```routes.js``` nor in any other middleware, the server will just respond with HTTP STATUS CODE ```404```.
+INote that instead of just returning 404 for requests that couldn't be resolved, it will also render a custom 404 page (```./client/components/NotFound404```).
 
 ### Using stylus / CSS
 Niru comes with stylus support out of the box so in order to edit the app's style just edit the ```style.styl``` file.
@@ -144,18 +180,18 @@ Even though Stylus is a lot like SASS/SCSS there are a few minor syntax differen
 ### Normalize.CSS
 By default [normalize.css](https://necolas.github.io/normalize.css/) is included but if you for some reason don't want to use it just comment out or delete
 ```
-@import '../../../node_modules/normalize.css'
+@import '../../node_modules/normalize.css'
 ```
-in ```/style/sutairu/index.styl```.
+in ```./client/stylus/style.styl```.
 
 ### Sutairu
-Sutairu is a really minimal CSS framework I created that gives niru some default styling to make you not want to gouge your eyes out. The easiest way to customize it is to overwrite its default variables in ```style.styl```, right above(!) the import statements. If you put the overwrites below the imports it won't work. All possible variables can be found in ```/style/sutairu/base/_defaultVars.styl```.
+Sutairu is a really minimal CSS framework I created that gives niru some default styling to make you not want to gouge your eyes out. The easiest way to customize it is to overwrite its default variables in ```style.styl```, right above(!) the import statements. If you put the overwrites below the imports it won't work. All possible variables can be found in ```./client/stylus/sutairu/base/_defaultVars.styl```.
 If for example you want to overwrite the primary color to sexy red and the button font size to 96px, you'd add the following lines at the beginning of ```style.styl```:
 ```
 $primaryColor = red
 $buttonFontSize = 96px
 ```
-Although you COULD directly edit the variables inside ```/style/sutairu/base/_defaultVars.styl``` I'd recommend not touching them but instead overwriting them inside ```style.styl``` like I showed you, so that you have the defaults always available should you mess up.
+Although you COULD directly edit the variables inside ```./client/stylus/sutairu/base/_defaultVars.styl``` I'd recommend not touching them but instead overwriting them inside ```style.styl``` like I showed you, so that you have the defaults always available should you mess up.
 
 If you don't want to use sutairu just remove its import in ```style.styl``` by commenting out / deleting
 ```
@@ -174,7 +210,7 @@ To see which functional css bits are available, have a look at the files inside 
 
 For a more thorough introduction to functional CSS check out https://marcelosomers.com/writing/rationalizing-functional-css/.
 
-Like sutairu, atomiku can be somewhat customized by overwriting its default variables which you can find in ```/style/atomiku/_defaultVars.styl```. The same "rules" apply here.
+Like sutairu, atomiku can be somewhat customized by overwriting its default variables which you can find in ```./client/stylus/atomiku/_defaultVars.styl```. The same "rules" apply here.
 
 The cool thing about functional CSS is that you don't have to use it everywhere. You can easily just use it in addition to your regular BEM / SMACCS or whatever CSS to cut down on the number of classes you need to manually create.
 
@@ -183,20 +219,5 @@ If you don't want to use atomiku at all though, just remove its import in ```sty
 @import './atomiku'
 ```
 
-### PurifyCSS
-When you run in production mode with ```yarn build:start``` or just build for production with ```yarn build``` PurifyCSS will automatically remove all unused CSS from the resulting .css file.
-
-## Preact
-Niru is able to use the smaller (and sometimes faster) [preact](https://preactjs.com/) instead of React out of the box. To enable preact, open ```webpack.config.client.js``` (be sure to stop niru) and change
-```
-const usePreact = false;
-```
-to
-```
-const usePreact = true;
-```
-Now add preact and preact-compat packages via:
-```
-yarn add preact preact-compat
-```
-Niru should now use preact.
+### Purgecss
+When you run in production mode with ```yarn start``` or just build for production with ```yarn build``` Purgecss will automatically remove all unused CSS from the resulting .css file.
