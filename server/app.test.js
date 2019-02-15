@@ -3,15 +3,48 @@
  */
 /* eslint-disable global-require */
 import request from 'supertest';
-
+import * as fs from 'fs';
 // Test process.env code adapted from:
 // https://stackoverflow.com/questions/48033841/test-process-env-with-jest#48042799
 
 let app = null;
 
+const createWebpackAssetsJSON = () => {
+  const webpackAssetsJSON = JSON.stringify({
+    main: {
+      css: 'main.css',
+      js: 'main.js',
+    },
+    runtime: {
+      css: 'runtime.css',
+      js: 'runtime.js',
+    },
+    vendors: {
+      css: 'vendors.css',
+      js: 'vendors.js',
+    },
+  });
+
+  try {
+    fs.mkdirSync('./dist/');
+  } catch (err) {
+    if (err.code !== 'EEXIST') throw err;
+  } finally {
+    fs.writeFileSync('./dist/webpack-assets.json', webpackAssetsJSON);
+  }
+};
+
 describe('Express Server', () => {
   describe('process.env.NODE_ENV = test', () => {
     const OLD_ENV = process.env;
+
+    beforeAll(() => {
+      // Create the webpack-assets.json if it does not already exist.
+      // (The file is only created on running either 'start' or 'build' package.json scripts.)
+      if (!fs.existsSync('./dist/webpack-assets.json')) {
+        createWebpackAssetsJSON();
+      }
+    });
 
     beforeEach(() => {
       jest.resetModules(); // this is important
