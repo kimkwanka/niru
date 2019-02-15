@@ -115,3 +115,11 @@ export default (req, res) => {
   // Regardless of 404 or not, send over the rendered page
   res.send(pageToRender);
 };
+
+if (module.hot) {
+  module.hot.accept([
+    '../client/components/App/App',
+    '../client/reducers',
+  ], () => {
+  });
+}

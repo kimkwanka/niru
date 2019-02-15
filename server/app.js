@@ -3,8 +3,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 
-import serverSideRendering from './serverSideRendering';
 import api from './api';
+
+const SSR = process.env.NODE_ENV !== 'production' ? require('../dist/hot-ssr').default : require('./serverSideRendering').default;
 
 const isDev = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
 
@@ -44,6 +45,6 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 app.get('/api', api);
 
 // Server side rendering of React pages and 404s
-app.get('*', serverSideRendering);
+app.get('*', SSR);
 
 export default app;
