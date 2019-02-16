@@ -34,6 +34,16 @@ const createWebpackAssetsJSON = () => {
   }
 };
 
+const createHotSsrJs = () => {
+  try {
+    fs.mkdirSync('./dist/');
+  } catch (err) {
+    if (err.code !== 'EEXIST') throw err;
+  } finally {
+    fs.copyFileSync('./server/serverSideRendering.jsx', './dist/hot-ssr.js');
+  }
+};
+
 describe('Express Server', () => {
   describe('process.env.NODE_ENV = test', () => {
     const OLD_ENV = process.env;
@@ -43,6 +53,9 @@ describe('Express Server', () => {
       // (The file is only created on running either 'start' or 'build' package.json scripts.)
       if (!fs.existsSync('./dist/webpack-assets.json')) {
         createWebpackAssetsJSON();
+      }
+      if (!fs.existsSync('./dist/hot-ssr.js')) {
+        createHotSsrJs();
       }
     });
 

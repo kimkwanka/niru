@@ -1,4 +1,5 @@
 # niru
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 Universal / isomorphic fullstack boilerplate with React, React-Router, React-Redux and more!
 
 # Attention!
@@ -14,23 +15,24 @@ Although primarily written for my own needs I want to share it so people can use
 Unlike most boilerplates it comes with its own 2 mini CSS frameworks to not only make apps look pleasing right from the beginning but also leverage functional / atomic css to speed up development.
 
 ### Main Features
-+ Minimal Webpack V4 config
-+ State management via React Redux (with prehydrated store)
-+ Uses Redux devtools if installed and logs state changes to console (in development mode)
-+ Routing via React-Router V4
-+ Server side rendering (SSR)
-+ Hot module replacement (HMR) on client side
-+ Server hot reloads when SSR parts are concerned, otherwise autorestarts and reloads browser
-+ Unit tests and coverage via Jest, Enzyme and Supertest
-+ Dynamic document ```<head>``` via React-Helmet
-+ Automatic cache invalidation via use of hash based bundle filenames
-+ AirBnB ESLint profile for use with your favorite code editor's ESLint plugin or the command line version
++ Minimal [Webpack V4](https://github.com/webpack/webpack) config
++ State management via [React Redux](https://redux.js.org/basics/usage-with-react) (with prehydrated store)
++ Uses [Redux devtools](https://github.com/reduxjs/redux-devtools) if installed and logs state changes to console (in development mode)
++ Routing via [React-Router V4](https://github.com/ReactTraining/react-router)
++ [Server side rendering (SSR)](https://reactjs.net/features/server-side-rendering.html)
++ [Hot module replacement (HMR)](https://webpack.js.org/concepts/hot-module-replacement/) on client side
++ Server hot reloads when SSR parts are concerned, otherwise automatically restarts and reloads browser (via [nodemon](https://github.com/remy/nodemon)  and [reload](https://github.com/alallier/reload)
++ Unit tests and coverage via [Jest](https://github.com/facebook/jest), [Enzyme](https://github.com/airbnb/enzyme) and [SuperTest](https://github.com/visionmedia/supertest)
++ Dynamic document ```<head>``` via [React Helmet](https://github.com/nfl/react-helmet)
++ Automatic [cache invalidation](https://webpack.js.org/guides/caching/) via use of hash based bundle filenames
++ AirBnB [ESLint](https://github.com/eslint/eslint) profile for use with your favorite code editor's ESLint plugin or the command line version
 + ES6 on the server side
 + Custom favicon.ico and 404 page
++ Automated versioning and CHANGELOG generation via [standard-version](https://github.com/conventional-changelog/standard-version)
 + A sticky footer :)
 
 ### CSS Features:
-+ Stylus support
++ [Stylus](http://stylus-lang.com/) support
 + Mini Styleguide page
 + Autoprefixer and auto minification
 + Includes normalize.css by default
@@ -125,7 +127,7 @@ or
 ```
 npm test
 ```
-(When using yarn, you can add ```--verbose``` to show each individual test's output.)
+(When using yarn, you can add ```--verbose``` to show each individual test's output. If you use npm, add ```-- --verbose``` instead.)
 ### Run tests continuously
 To run all included tests continuously, rerunning them automatically when test files change:
 ```
@@ -148,6 +150,36 @@ npm run lint
 ```
 This will lint all client and server source files.
 
+## Automatic versioning and changelog creation
+If you follow the [Conventional Commits Specification](https://conventionalcommits.org/) you can let [standard-version](https://github.com/conventional-changelog/standard-version) automatically version your project and create / update a CHANGELOG.md from your commit messages.
+### Dry mode
+Running standard-version in dry mode via
+```
+yarn release:dry
+```
+or
+```
+npm run release:dry
+```
+allows you to see what commands would be run, without actually updating any files or commiting to git yet.
+### Publish a new release
+If you like what you see and are ready to publish a new release run:
+```
+yarn release
+```
+or
+```
+npm run release
+```
+to bump up the version, create/update CHANGELOG.md, commit to git and tag a new release.
+
+After that it's only a matter of
+```
+git push --follow-tags origin master
+```
+to finalize publishing process.
+### More information
+Check out [standard-version](https://github.com/conventional-changelog/standard-version)'s github page for more indepth information on CLI usage, etc.
 ## How to use niru
 ### Folder structure
     .
@@ -166,7 +198,7 @@ This will lint all client and server source files.
     ...
 
 ### The mysterious /dist folder and static assets
-Even though its contents are served by the server, the ```/dist``` folder gets automatically deleted and recreated when starting niru. That's why you should never put files in there manually. If you want to add static assets like images, etc. put them into ```./public``` instead and restart niru if it is running. Assets are then accessible at ```/``` in your app. 
+Even though its contents are served by the server, the ```./dist``` folder gets automatically deleted and recreated when starting niru. That's why you should never put files in there manually. If you want to add static assets like images, etc. put them into ```./public``` instead and restart niru if it is running. Assets are then accessible at ```/``` in your app. 
 
 So if say you added ```lolcat.jpg``` you could use it like 
 ```
@@ -186,7 +218,7 @@ Niru's express server will try to resolve any requests in this order:
 3. React Router routes defined in ```./client/routes.js```
 3. 404 for everything else
 
-INote that instead of just returning 404 for requests that couldn't be resolved, it will also render a custom 404 page (```./client/components/NotFound404```).
+Note that instead of just returning 404 for requests that couldn't be resolved, it will also render a custom 404 page (```./client/components/NotFound404```).
 
 ### Using stylus / CSS
 Niru comes with stylus support out of the box so in order to edit the app's style just edit the ```style.styl``` file.
@@ -223,7 +255,7 @@ An example of such usage can be seen in ```Home.jsx``` where the ```<div>``` is 
 ```
 So instead of coming up with some weird name like "home-button-outer-div" and then writing the CSS normally its styling is directly applied via those functional bits.
 ```flex-column``` makes the div a ```display: flex;``` container with ```flex-direction: column;```, ```items-center``` applies ```align-items: center;``` to horizontally center its children and ```margin-top-big``` just adds some big margin to the top.
-To see which functional css bits are available, have a look at the files inside ```/atomiku```. Feel free to add more bits if you need them.
+To see which functional css bits are available, have a look at the files inside ```./client/stylus/atomiku/```. Feel free to add more bits if you need them.
 
 For a more thorough introduction to functional CSS check out https://marcelosomers.com/writing/rationalizing-functional-css/.
 
