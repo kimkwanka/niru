@@ -166,7 +166,7 @@ This will lint all client and server source files.
     ...
 
 ### The mysterious /dist folder and static assets
-Even though its contents are served by the server, the ```/dist``` folder gets automatically deleted and recreated when starting niru. That's why you should never put files in there manually. If you want to add static assets like images, etc. put them into ```./public``` instead and restart niru if it is running. Assets are then accessible at ```/``` in your app. 
+Even though its contents are served by the server, the ```./dist``` folder gets automatically deleted and recreated when starting niru. That's why you should never put files in there manually. If you want to add static assets like images, etc. put them into ```./public``` instead and restart niru if it is running. Assets are then accessible at ```/``` in your app. 
 
 So if say you added ```lolcat.jpg``` you could use it like 
 ```
@@ -186,7 +186,7 @@ Niru's express server will try to resolve any requests in this order:
 3. React Router routes defined in ```./client/routes.js```
 3. 404 for everything else
 
-INote that instead of just returning 404 for requests that couldn't be resolved, it will also render a custom 404 page (```./client/components/NotFound404```).
+Note that instead of just returning 404 for requests that couldn't be resolved, it will also render a custom 404 page (```./client/components/NotFound404```).
 
 ### Using stylus / CSS
 Niru comes with stylus support out of the box so in order to edit the app's style just edit the ```style.styl``` file.
@@ -223,7 +223,7 @@ An example of such usage can be seen in ```Home.jsx``` where the ```<div>``` is 
 ```
 So instead of coming up with some weird name like "home-button-outer-div" and then writing the CSS normally its styling is directly applied via those functional bits.
 ```flex-column``` makes the div a ```display: flex;``` container with ```flex-direction: column;```, ```items-center``` applies ```align-items: center;``` to horizontally center its children and ```margin-top-big``` just adds some big margin to the top.
-To see which functional css bits are available, have a look at the files inside ```/atomiku```. Feel free to add more bits if you need them.
+To see which functional css bits are available, have a look at the files inside ```./client/stylus/atomiku/```. Feel free to add more bits if you need them.
 
 For a more thorough introduction to functional CSS check out https://marcelosomers.com/writing/rationalizing-functional-css/.
 
