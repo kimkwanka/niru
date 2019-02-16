@@ -18,13 +18,13 @@ Unlike most boilerplates it comes with its own 2 mini CSS frameworks to not only
 + State management via React Redux (with prehydrated store)
 + Uses Redux devtools if installed and logs state changes to console (in development mode)
 + Routing via React-Router V4
-+ Server side rendering
-+ Hot module reloading (redux state preserving) on client side
-+ Express server automatically restarts on changes and reloads browser (in development mode)
++ Server side rendering (SSR)
++ Hot module replacement (HMR) on client side
++ Server hot reloads when SSR parts are concerned, otherwise autorestarts and reloads browser
 + Unit tests and coverage via Jest, Enzyme and Supertest
 + Dynamic document ```<head>``` via React-Helmet
 + Automatic cache invalidation via use of hash based bundle filenames
-+ AirBnB ESLint profile for use with your favorite Code Editor's ESLint plugin
++ AirBnB ESLint profile for use with your favorite code editor's ESLint plugin or the command line version
 + ES6 on the server side
 + Custom favicon.ico and 404 page
 + A sticky footer :)
@@ -58,7 +58,6 @@ or
 ```
 npm run dev
 ```
-##### (Note that the use of ```run``` is NOT optional here)
 ### Accessing the app locally or on your network
 When started, the server will output 2 urls to access the running app:
 ```
@@ -72,6 +71,13 @@ On Your Network:  http://192.168.1.6:8080/    <------ JUST AN EXAMPLE!!!!
 
 Open your browser on either ```http://localhost:8080/``` or the one that looks similar to ```http://192.168.1.6:8080/``` to see the running app.
 The second url can be opened on any machine / mobile / whatever on your local network. This can be pretty handy to test the app on a variety of devices / OSes.
+
+### HMR (Hot module replacement)
+When files in the ```./client``` folder change, hot module replacement is triggered on **both** the client and server to instantly reflect those changes.
+
+### Nodemon autorestart and browser reload
+Changes to files in the ```./server``` folder don't trigger HMR but instead make nodemon restart the server and then trigger a hard refresh in the browser.
+
 ## Production mode
 To run niru in production mode use either
 ```
@@ -119,7 +125,7 @@ or
 ```
 npm test
 ```
-(Add ```--verbose``` to show each individual test's output.)
+(When using yarn, you can add ```--verbose``` to show each individual test's output.)
 ### Run tests continuously
 To run all included tests continuously, rerunning them automatically when test files change:
 ```
@@ -129,7 +135,18 @@ or
 ```
 npm test:watch
 ```
-
+## Linting
+It is recommended to use ESLint directly in your favorite code editor via plugins like [VSCode ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), [Atom ESLint](https://atom.io/packages/eslint) or similar.
+### On the command line
+Since many code editors only lint the currently opened files automatically, it can be helpful to run ESLint on the command line:
+```
+yarn lint
+```
+or
+```
+npm run lint
+```
+This will lint all client and server source files.
 
 ## How to use niru
 ### Folder structure
@@ -220,4 +237,4 @@ If you don't want to use atomiku at all though, just remove its import in ```sty
 ```
 
 ### Purgecss
-When you run in production mode with ```yarn start``` or just build for production with ```yarn build``` Purgecss will automatically remove all unused CSS from the resulting .css file.
+When you run in production mode with ```yarn start``` / ```npm start``` or just build for production with ```yarn build``` / ```npm run build```Purgecss will automatically remove all unused CSS from the resulting .css file.
