@@ -1,6 +1,13 @@
+/* eslint-disable global-require */
 module.exports = {
   plugins: [
-    //eslint-disable-next-line
     require('autoprefixer'),
+    require('cssnano')({
+      preset: ['default', {
+        discardComments: {
+          removeAll: true,
+        },
+      }],
+    }),
   ],
 };

@@ -1,8 +1,17 @@
 {
     "extends": "airbnb",
-    "parser": "babel-eslint",
     "env": {
-      "browser": true,
-      "es6": true
+        "jest": true
+    },
+    "rules": {
+        "jsx-a11y/label-has-associated-control": ["error", { 
+            "assert": "either"
+        }],
+        "jsx-a11y/label-has-for": ["error", { 
+            "required": { 
+                "some": ["nesting", "id"]
+            } 
+        }],
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
     }
 }
