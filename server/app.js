@@ -5,6 +5,7 @@ import path from 'path';
 
 import api from './api';
 
+// eslint-disable-next-line import/no-unresolved
 const SSR = process.env.NODE_ENV !== 'production' ? require('../dist/hot-ssr').default : require('./serverSideRendering').default;
 
 const isDev = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';

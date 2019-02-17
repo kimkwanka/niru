@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> - Snapshot matches its snapshot 1`] = `
+<footer>
+  <div
+    className="container flex-column items-center"
+  >
+    <h5
+      className="margin-top-small"
+    >
+      This is a sticky footer!
+    </h5>
+    <h5>
+      <a
+        href="https://github.com/kimkwanka/niru"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        niru
+      </a>
+       by Kim Kwanka © 2019
+    </h5>
+  </div>
+</footer>
+`;
