@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> - Snapshot matches its snapshot 1`] = `
+<div
+  className="App"
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+    htmlAttributes={
+      Object {
+        "lang": "en",
+      }
+    }
+    meta={
+      Array [
+        Object {
+          "content": "Universal fullstack boilerplate",
+          "name": "description",
+        },
+      ]
+    }
+    titleAttributes={
+      Object {
+        "itemprop": "name",
+        "lang": "en",
+      }
+    }
+    titleTemplate="niru | %s"
+  />
+  <Header />
+  <main
+    className="page-content relative overflow-hidden"
+  >
+    <Switch>
+      <Route
+        exact={true}
+        key="0"
+        path="/"
+        render={[Function]}
+      />
+      <Route
+        key="1"
+        path="/about"
+        render={[Function]}
+      />
+      <Route
+        key="2"
+        path="/styleguide"
+        render={[Function]}
+      />
+      <Route
+        key="3"
+        path="*"
+        render={[Function]}
+      />
+    </Switch>
+  </main>
+  <Footer />
+</div>
+`;

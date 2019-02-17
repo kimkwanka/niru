@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> - Snapshot matches its snapshot 1`] = `
+<div
+  className="container margin-top-small"
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+    title="Home"
+  />
+  <h1>
+    Home
+  </h1>
+  <h3
+    className="center"
+  >
+    Data from (prehydrated) Redux store:
+  </h3>
+  <h4
+    className="center normal"
+  >
+    user.name:
+    <span
+      className="bold"
+    >
+       TestUsername
+    </span>
+  </h4>
+  <h4
+    className="center normal"
+  >
+    user.authenticated:
+    <span
+      className="bold"
+    >
+       true
+    </span>
+  </h4>
+  <div
+    className="flex-column items-center margin-top-big"
+  >
+    <input
+      defaultValue="TestUsername"
+      onChange={[Function]}
+      type="text"
+    />
+    <button
+      className="margin-top-small button--accent"
+      onClick={[Function]}
+      type="button"
+    >
+      Toggle Authenticated
+    </button>
+  </div>
+</div>
+`;
