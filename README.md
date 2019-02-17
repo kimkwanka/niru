@@ -1,6 +1,7 @@
 # niru
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![Build Status](https://travis-ci.org/kimkwanka/niru.svg?branch=master)](https://travis-ci.org/kimkwanka/niru)
 [![Dependency Status](https://david-dm.org/kimkwanka/niru.svg)](https://david-dm.org/kimkwanka/niru)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 Universal / isomorphic fullstack boilerplate with React, React-Router, React-Redux and more!
 
