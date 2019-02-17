@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.2.0](https://github.com/kimkwanka/niru/compare/v2.1.0...v2.2.0) (2019-02-17)
+
+
+### Bug Fixes
+
+* **ci:** disable eslint rule to prevent lint fail in CI ([d626c1e](https://github.com/kimkwanka/niru/commit/d626c1e))
+* **ci:** include snapshots in repo to make CI tests pass ([925b7ed](https://github.com/kimkwanka/niru/commit/925b7ed))
+* **docs:** add missing line break ([aee346e](https://github.com/kimkwanka/niru/commit/aee346e))
+
+
+### Features
+
+* **ci:** add build testing via Travis CI ([f26f300](https://github.com/kimkwanka/niru/commit/f26f300))
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
 # 2.1.0 (2019-02-16)
 
 

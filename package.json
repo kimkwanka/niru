@@ -1,6 +1,6 @@
 {
   "name": "niru",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Universal / isomorphic fullstack boilerplate",
   "main": "server/server.js",
   "repository": "git@github.com:kimkwanka/niru.git",
