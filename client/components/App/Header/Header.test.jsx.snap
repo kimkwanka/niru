@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> - Snapshot matches its snapshot 1`] = `
+<header>
+  <div
+    className="container flex"
+  >
+    <div
+      className="logo-text"
+    >
+      niru
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <NavLink
+            activeClassName="navItemActive"
+            aria-current="page"
+            exact={true}
+            to="/"
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            activeClassName="navItemActive"
+            aria-current="page"
+            to="/about"
+          >
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            activeClassName="navItemActive"
+            aria-current="page"
+            to="/styleguide"
+          >
+            Styleguide
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+`;

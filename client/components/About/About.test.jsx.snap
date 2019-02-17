@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<About /> - Snapshot matches its snapshot 1`] = `
+<div
+  className="container margin-top-small"
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+    title="About"
+  />
+  <h1>
+    About
+  </h1>
+  <img
+    alt="fistbump"
+    className="width-100"
+    src="fistbump.jpg"
+  />
+  <p>
+    Imagine there was a fancy About page here...
+  </p>
+</div>
+`;
