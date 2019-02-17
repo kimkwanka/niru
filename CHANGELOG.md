@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.1](https://github.com/kimkwanka/niru/compare/v2.2.0...v2.2.1) (2019-02-17)
+
+
+### Bug Fixes
+
+* **changelog:** manually fix current changelog ([55d1be6](https://github.com/kimkwanka/niru/commit/55d1be6))
+* **changelog:** replace standard-version with fixed fork ([966f064](https://github.com/kimkwanka/niru/commit/966f064))
+
+
+
 # [2.2.0](https://github.com/kimkwanka/niru/compare/v2.1.0...v2.2.0) (2019-02-17)
 
 
@@ -31,6 +41,3 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * add 'standard-version' to automate versioning and CHANGELOG management. ([71769a2](https://github.com/kimkwanka/niru/commit/71769a2))
-
-
-
