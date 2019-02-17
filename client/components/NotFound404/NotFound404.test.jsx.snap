@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFound404 /> - Snapshot matches its snapshot 1`] = `
+<div
+  className="container margin-top-small"
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+    title="Not Found"
+  />
+  <h1>
+    404
+  </h1>
+  <p>
+    Oops! Nothing here :(
+  </p>
+</div>
+`;
