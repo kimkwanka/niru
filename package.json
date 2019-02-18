@@ -12,7 +12,7 @@
     "lint": "eslint client server --ext .js,.jsx",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "build": "webpack --config webpack.prod.js",
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "dev": "webpack --config webpack.hot-ssr.js --watch",
     "start": "yarpm run build && NODE_ENV=production nodemon --exec babel-node server/server.js"
   },
@@ -22,6 +22,10 @@
     ],
     "ext": "js,jsx"
   },
+  "sideEffects": [
+    "*.css",
+    "*.styl"
+  ],
   "devDependencies": {
     "babel-jest": "^24.1.0",
     "enzyme": "^3.9.0",
