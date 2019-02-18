@@ -8,6 +8,19 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          // Disable transformation of ES6 module syntax to make enable Tree Shaking.
+          // Note that we also need to set NODE_ENV to 'production' manually
+          // (see package.json 'build' script)
+          options: {
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  modules: false,
+                },
+              ],
+            ],
+          },
         },
       },
     ],
