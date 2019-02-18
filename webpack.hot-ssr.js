@@ -35,7 +35,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new WebpackShellPlugin({
       onBuildEnd: {
-        scripts: ['nodemon --exec babel-node server/server.js'],
+        scripts: ['nodemon --exec node -r @babel/register server/server.js'],
       },
     }),
   ],
