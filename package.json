@@ -14,7 +14,7 @@
     "test:watch": "jest --watchAll",
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "dev": "webpack --config webpack.hot-ssr.js --watch",
-    "start": "yarpm run build && NODE_ENV=production nodemon --exec babel-node server/server.js"
+    "start": "yarpm run build && NODE_ENV=production nodemon --exec node -r @babel/register server/server.js"
   },
   "nodemonConfig": {
     "watch": [
@@ -49,9 +49,9 @@
   },
   "dependencies": {
     "@babel/core": "^7.3.3",
-    "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "assets-webpack-plugin": "^3.9.7",
     "autoprefixer": "^9.4.7",
     "babel-loader": "^8.0.5",
