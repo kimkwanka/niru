@@ -8,7 +8,7 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          // Disable transformation of ES6 module syntax to make enable Tree Shaking.
+          // Disable transformation of ES6 module syntax to enable Tree Shaking.
           // Note that we also need to set NODE_ENV to 'production' manually
           // (see package.json 'build' script)
           options: {
@@ -22,6 +22,13 @@ module.exports = {
             ],
           },
         },
+      },
+      // Include the RHL webpack plugin additionally to the babel plugin to hot patch react-dom.
+      // This makes react-dom more compatible with the React 16.6+ features.
+      {
+        test: /\.jsx?$/,
+        include: /node_modules/,
+        use: ['react-hot-loader/webpack'],
       },
     ],
   },
