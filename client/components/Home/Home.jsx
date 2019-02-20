@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { renameUser, toggleAuthenticated } from '../../actions/userActions';
+import { renameUser, toggleAuthenticated } from 'Client/actions/userActions';
 
 // Additionally export the undecorated <Home /> itself for easier testing.
 // (https://redux.js.org/recipes/writing-tests#connected-components)
