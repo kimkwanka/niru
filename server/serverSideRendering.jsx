@@ -6,9 +6,9 @@ import { createStore } from 'redux';
 import { Helmet } from 'react-helmet';
 import * as fs from 'fs';
 
-import App from '../client/components/App/App';
+import App from 'Client/components/App/App';
 
-import reducers from '../client/reducers';
+import reducers from 'Client/reducers';
 
 // We need to setup our server rendered React markup differently depending on the current mode:
 
@@ -61,9 +61,9 @@ const renderPage = (url, store, routerContext) => {
   const helmet = Helmet.renderStatic();
 
   // Insert the sample store's state for client side store hydration
-  const initialState = JSON.stringify(
-    store.getState(),
-  ).replace(/</g, '\\u003c');
+  const initialState = JSON
+    .stringify(store.getState())
+    .replace(/</g, '\\u003c');
 
   return `
   <!DOCTYPE html>
@@ -118,8 +118,7 @@ export default (req, res) => {
 
 if (module.hot) {
   module.hot.accept([
-    '../client/components/App/App',
-    '../client/reducers',
-  ], () => {
-  });
+    'Client/components/App/App',
+    'Client/reducers'],
+  () => {});
 }

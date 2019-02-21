@@ -3,10 +3,10 @@ import Helmet from 'react-helmet';
 import { renderRoutes } from 'react-router-config';
 import { hot } from 'react-hot-loader/root';
 
+import routes from 'Client/routes';
+
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-
-import routes from '../../routes';
 
 const App = () => (
   <div className="App">

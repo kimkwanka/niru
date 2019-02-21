@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const WebpackShellPlugin = require('webpack-shell-plugin-next');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   mode: 'development',
@@ -29,6 +30,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      Client: path.resolve(__dirname, 'client'),
+    },
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
