@@ -1,10 +1,12 @@
+const isDev = process.env.NODE_ENV !== 'production' && process.argv.indexOf('-p') === -1;
+
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const WebpackShellPlugin = require('webpack-shell-plugin-next');
 const path = require('path');
 
-module.exports = {
-  mode: 'development',
+const common = {
   target: 'node',
   node: {
     __dirname: true,
@@ -15,14 +17,13 @@ module.exports = {
       whitelist: ['webpack/hot/poll?1000'],
     }),
   ],
-  entry: ['webpack/hot/poll?1000', './server/serverSideRendering.jsx'],
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader?cacheDirectory',
         },
       },
     ],
@@ -33,14 +34,6 @@ module.exports = {
       Client: path.resolve(__dirname, 'client'),
     },
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new WebpackShellPlugin({
-      onBuildEnd: {
-        scripts: ['nodemon --exec node -r @babel/register server/server.js'],
-      },
-    }),
-  ],
   output: {
     publicPath: '/',
     filename: 'ssr.js',
@@ -48,3 +41,21 @@ module.exports = {
     library: 'ssr',
   },
 };
+
+module.exports = isDev
+  ? merge(common, {
+    mode: 'development',
+    entry: ['webpack/hot/poll?1000', './server/serverSideRendering.jsx'],
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new WebpackShellPlugin({
+        onBuildEnd: {
+          scripts: ['nodemon --exec node -r @babel/register server/server.js'],
+        },
+      }),
+    ],
+  })
+  : merge(common, {
+    mode: 'production',
+    entry: './server/serverSideRendering.jsx',
+  });
