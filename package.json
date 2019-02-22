@@ -12,12 +12,14 @@
     "lint": "eslint client server --ext .js,.jsx",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "build": "yarpm run build:clean && yarpm run build:ssr && yarpm run build:client",
+    "start": "yarpm run build && yarpm run serve",
+    "build": "yarpm run build:clean && yarpm run build:server && yarpm run build:ssr && yarpm run build:client",
     "build:clean": "rimraf dist",
     "build:client": "NODE_ENV=production webpack --config webpack.prod.js",
     "build:ssr": "NODE_ENV=production webpack --config webpack.ssr.js",
-    "dev": "webpack --config webpack.ssr.js --watch",
-    "start": "yarpm run build && NODE_ENV=production nodemon --exec node -r @babel/register server/server.js"
+    "build:server": "babel server -d dist",
+    "serve": "NODE_ENV=production nodemon dist/server.js",
+    "dev": "webpack --config webpack.ssr.js --watch"
   },
   "nodemonConfig": {
     "watch": [
@@ -53,6 +55,7 @@
     "webpack-shell-plugin-next": "^0.6.4"
   },
   "dependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
