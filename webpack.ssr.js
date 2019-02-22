@@ -43,8 +43,8 @@ module.exports = {
   ],
   output: {
     publicPath: '/',
-    filename: 'hot-ssr.js',
+    filename: 'ssr.js',
     libraryTarget: 'umd',
-    library: 'hot-ssr',
+    library: 'ssr',
   },
 };
