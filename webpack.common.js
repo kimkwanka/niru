@@ -7,7 +7,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader?cacheDirectory', // Enable Caching
           // Disable transformation of ES6 module syntax to enable Tree Shaking.
           // Note that we also need to set NODE_ENV to 'production' manually
           // (see package.json 'build' script)
