@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const WebpackShellPlugin = require('webpack-shell-plugin-next');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -36,7 +35,6 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new CleanWebpackPlugin(['dist']),
     new WebpackShellPlugin({
       onBuildEnd: {
         scripts: ['nodemon --exec node -r @babel/register server/server.js'],
