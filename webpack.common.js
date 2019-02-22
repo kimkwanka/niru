@@ -32,6 +32,7 @@ module.exports = {
       },
     ],
   },
+  stats: 'minimal',
   plugins: [
     new webpack.HashedModuleIdsPlugin(),
   ],

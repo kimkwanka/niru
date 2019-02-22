@@ -12,6 +12,7 @@ const common = {
     __dirname: true,
     __filename: true,
   },
+  stats: 'minimal',
   externals: [
     nodeExternals({
       whitelist: ['webpack/hot/poll?1000'],
