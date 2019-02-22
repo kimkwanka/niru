@@ -6,7 +6,7 @@ import path from 'path';
 import api from './api';
 
 // eslint-disable-next-line import/no-unresolved
-const SSR = process.env.NODE_ENV !== 'production' ? require('../dist/hot-ssr').default : require('./serverSideRendering').default;
+import SSR from '../dist/ssr'; // Dynamically built from ./serverSideRendering.jsx
 
 const isDev = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
 
@@ -24,8 +24,7 @@ if (isDev) {
 
   app.use(
     webpackDevMiddleware(compiler, {
-      hot: true,
-      noInfo: true,
+      stats: config.stats,
       publicPath: config.output.publicPath,
     }),
   );

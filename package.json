@@ -12,9 +12,14 @@
     "lint": "eslint client server --ext .js,.jsx",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "build": "NODE_ENV=production webpack --config webpack.prod.js",
-    "dev": "webpack --config webpack.hot-ssr.js --watch",
-    "start": "yarpm run build && NODE_ENV=production nodemon --exec node -r @babel/register server/server.js"
+    "start": "run-s build serve",
+    "build": "run-s build:clean && run-p build:server build:ssr build:client",
+    "build:clean": "rimraf dist",
+    "build:client": "NODE_ENV=production webpack --config webpack.prod.js",
+    "build:ssr": "NODE_ENV=production webpack --config webpack.ssr.js",
+    "build:server": "babel server -d dist",
+    "serve": "NODE_ENV=production nodemon dist/server.js",
+    "dev": "run-s build:clean && webpack --config webpack.ssr.js --watch"
   },
   "nodemonConfig": {
     "watch": [
@@ -50,6 +55,7 @@
     "webpack-shell-plugin-next": "^0.6.4"
   },
   "dependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
@@ -58,7 +64,6 @@
     "autoprefixer": "^9.4.7",
     "babel-loader": "^8.0.5",
     "body-parser": "^1.18.3",
-    "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.10",
@@ -68,6 +73,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "nodemon": "^1.18.10",
     "normalize.css": "^8.0.1",
+    "npm-run-all": "^4.1.5",
     "postcss-loader": "^3.0.0",
     "prop-types": "^15.7.2",
     "purgecss-webpack-plugin": "^1.4.0",
@@ -79,12 +85,12 @@
     "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
+    "rimraf": "^2.6.3",
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
-    "webpack-merge": "^4.2.1",
-    "yarpm": "^0.2.1"
+    "webpack-merge": "^4.2.1"
   }
 }

@@ -40,7 +40,7 @@ const createHotSsrJs = () => {
   } catch (err) {
     if (err.code !== 'EEXIST') throw err;
   } finally {
-    fs.copyFileSync('./server/serverSideRendering.jsx', './dist/hot-ssr.js');
+    fs.copyFileSync('./server/serverSideRendering.jsx', './dist/ssr.js');
   }
 };
 
@@ -54,7 +54,7 @@ describe('Express Server', () => {
       if (!fs.existsSync('./dist/webpack-assets.json')) {
         createWebpackAssetsJSON();
       }
-      if (!fs.existsSync('./dist/hot-ssr.js')) {
+      if (!fs.existsSync('./dist/ssr.js')) {
         createHotSsrJs();
       }
     });
