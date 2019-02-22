@@ -19,7 +19,7 @@
     "build:ssr": "NODE_ENV=production webpack --config webpack.ssr.js",
     "build:server": "babel server -d dist",
     "serve": "NODE_ENV=production nodemon dist/server.js",
-    "dev": "webpack --config webpack.ssr.js --watch"
+    "dev": "run-s build:clean && webpack --config webpack.ssr.js --watch"
   },
   "nodemonConfig": {
     "watch": [
