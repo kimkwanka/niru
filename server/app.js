@@ -24,8 +24,6 @@ if (isDev) {
 
   app.use(
     webpackDevMiddleware(compiler, {
-      hot: true,
-      noInfo: true,
       publicPath: config.output.publicPath,
     }),
   );
