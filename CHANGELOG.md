@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.4.0](https://github.com/kimkwanka/niru/compare/v2.3.2...v2.4.0) (2019-02-22)
+
+
+### Bug Fixes
+
+* **build:** re-add cleaning step in development ([577d32a](https://github.com/kimkwanka/niru/commit/577d32a))
+
+
+### Features
+
+* transpile server using @babel/cli instead of using @babel/register in production ([31baf46](https://github.com/kimkwanka/niru/commit/31baf46))
+* **webpack:** enable babel-loader caching ([8679a38](https://github.com/kimkwanka/niru/commit/8679a38))
+* use aliases for nicer import paths ([7800bbc](https://github.com/kimkwanka/niru/commit/7800bbc))
+
+
+
 ## [2.3.2](https://github.com/kimkwanka/niru/compare/v2.3.1...v2.3.2) (2019-02-19)
 
 
