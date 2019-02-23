@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.1](https://github.com/kimkwanka/niru/compare/v2.4.0...v2.4.1) (2019-02-23)
+
+
+### Bug Fixes
+
+* **build:** make setting env variables compatible with Windows ([cf26f00](https://github.com/kimkwanka/niru/commit/cf26f00))
+* move dependencies into correct package.json category ([b731a26](https://github.com/kimkwanka/niru/commit/b731a26))
+* **webpack:** move RHL webpack plugin to dev config only ([36e20ab](https://github.com/kimkwanka/niru/commit/36e20ab))
+
+
+
 # [2.4.0](https://github.com/kimkwanka/niru/compare/v2.3.2...v2.4.0) (2019-02-22)
 
 
