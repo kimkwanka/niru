@@ -64,7 +64,6 @@
     "autoprefixer": "^9.4.7",
     "babel-loader": "^8.0.5",
     "body-parser": "^1.18.3",
-    "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.10",
     "express": "^4.16.4",
