@@ -15,10 +15,10 @@
     "start": "run-s build serve",
     "build": "run-s build:clean && run-p build:server build:ssr build:client",
     "build:clean": "rimraf dist",
-    "build:client": "NODE_ENV=production webpack --config webpack.prod.js",
-    "build:ssr": "NODE_ENV=production webpack --config webpack.ssr.js",
+    "build:client": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
+    "build:ssr": "cross-env NODE_ENV=production webpack --config webpack.ssr.js",
     "build:server": "babel server -d dist",
-    "serve": "NODE_ENV=production nodemon dist/server.js",
+    "serve": "cross-env NODE_ENV=production nodemon dist/server.js",
     "dev": "run-s build:clean && webpack --config webpack.ssr.js --watch"
   },
   "nodemonConfig": {
@@ -64,6 +64,7 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-module-resolver": "^3.2.0",
     "body-parser": "^1.18.3",
+    "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.10",
     "express": "^4.16.4",
