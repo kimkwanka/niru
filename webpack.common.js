@@ -23,13 +23,6 @@ module.exports = {
           },
         },
       },
-      // Include the RHL webpack plugin additionally to the babel plugin to hot patch react-dom.
-      // This makes react-dom more compatible with the React 16.6+ features.
-      {
-        test: /\.jsx?$/,
-        include: /node_modules/,
-        use: ['react-hot-loader/webpack'],
-      },
     ],
   },
   stats: 'minimal',
