@@ -1,10 +1,12 @@
+const webpack = require('webpack');
 const merge = require('webpack-merge');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const PurgecssPlugin = require('purgecss-webpack-plugin');
-const AssetsPlugin = require('assets-webpack-plugin');
 
 const path = require('path');
 const glob = require('glob');
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const AssetsPlugin = require('assets-webpack-plugin');
 
 const common = require('./webpack.common.js');
 
@@ -20,18 +22,6 @@ module.exports = merge(common, {
   entry: [
     path.resolve(__dirname, 'client/index.js'),
   ],
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
-    }),
-    new PurgecssPlugin({
-      paths: purgePaths,
-    }),
-    new AssetsPlugin({
-      fullPath: false,
-      path: path.join(__dirname, 'dist'),
-    }),
-  ],
   module: {
     rules: [
       {
@@ -45,9 +35,8 @@ module.exports = merge(common, {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 2,
-              // Apply 2 loaders before css-loader (postcss-loader and
-              // stylus-loader) to all @imports instead of 0.
+              importLoaders: 1,
+              // Apply 1 loaders before css-loader (postcss-loader) to all @imports instead of 0.
               // Without it, cssnano for example doesn't get applied to the normalize.css portion
             },
           },
@@ -57,6 +46,19 @@ module.exports = merge(common, {
       },
     ],
   },
+  plugins: [
+    new webpack.HashedModuleIdsPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
+    new PurgecssPlugin({
+      paths: purgePaths,
+    }),
+    new AssetsPlugin({
+      fullPath: false,
+      path: path.join(__dirname, 'dist'),
+    }),
+  ],
   output: {
     filename: '[name].[contenthash].js',
   },

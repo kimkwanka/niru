@@ -2,8 +2,10 @@ const isDev = process.env.NODE_ENV !== 'production' && process.argv.indexOf('-p'
 
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+
 const nodeExternals = require('webpack-node-externals');
 const WebpackShellPlugin = require('webpack-shell-plugin-next');
+
 const path = require('path');
 
 const common = {

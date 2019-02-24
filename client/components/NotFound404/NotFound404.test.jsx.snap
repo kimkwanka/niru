@@ -7,8 +7,11 @@ exports[`<NotFound404 /> - Snapshot matches its snapshot 1`] = `
   <HelmetWrapper
     defer={true}
     encodeSpecialCharacters={true}
-    title="Not Found"
-  />
+  >
+    <title>
+      Not Found
+    </title>
+  </HelmetWrapper>
   <h1>
     404
   </h1>

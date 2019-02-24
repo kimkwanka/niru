@@ -18,7 +18,9 @@ export const Home = ({ user, dispatch }) => {
 
   return (
     <div className="container margin-top-small">
-      <Helmet title="Home" />
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <h1>Home</h1>
       <h3 className="center">Data from (prehydrated) Redux store:</h3>
       <h4 className="center normal">

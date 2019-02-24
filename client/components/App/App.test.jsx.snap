@@ -7,27 +7,20 @@ exports[`<App /> - Snapshot matches its snapshot 1`] = `
   <HelmetWrapper
     defer={true}
     encodeSpecialCharacters={true}
-    htmlAttributes={
-      Object {
-        "lang": "en",
-      }
-    }
-    meta={
-      Array [
-        Object {
-          "content": "Universal fullstack boilerplate",
-          "name": "description",
-        },
-      ]
-    }
-    titleAttributes={
-      Object {
-        "itemprop": "name",
-        "lang": "en",
-      }
-    }
     titleTemplate="niru | %s"
-  />
+  >
+    <html
+      lang="en"
+    />
+    <title
+      itemProp="name"
+      lang="en"
+    />
+    <meta
+      content="Universal fullstack boilerplate"
+      name="description"
+    />
+  </HelmetWrapper>
   <Header />
   <main
     className="page-content relative overflow-hidden"

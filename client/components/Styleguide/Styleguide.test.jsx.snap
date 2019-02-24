@@ -7,8 +7,11 @@ exports[`<Styleguide /> - Snapshot matches its snapshot 1`] = `
   <HelmetWrapper
     defer={true}
     encodeSpecialCharacters={true}
-    title="Styleguide"
-  />
+  >
+    <title>
+      Styleguide
+    </title>
+  </HelmetWrapper>
   <h1
     className="margin-bottom-small"
   >

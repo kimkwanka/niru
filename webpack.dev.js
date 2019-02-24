@@ -1,6 +1,8 @@
-const merge = require('webpack-merge');
 const webpack = require('webpack');
+const merge = require('webpack-merge');
+
 const path = require('path');
+
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -11,10 +13,6 @@ module.exports = merge(common, {
     'webpack-hot-middleware/client',
     path.resolve(__dirname, 'client/index.js'),
   ],
-  devServer: {
-    hot: true,
-    contentBase: path.join(__dirname, 'public'),
-  },
   module: {
     rules: [
       {

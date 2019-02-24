@@ -3,7 +3,9 @@ import Helmet from 'react-helmet';
 
 const StyleGuide = () => (
   <div className="container margin-top-small">
-    <Helmet title="Styleguide" />
+    <Helmet>
+      <title>Styleguide</title>
+    </Helmet>
     <h1 className="margin-bottom-small">Styleguide</h1>
     <h1>H1 Heading</h1>
     <h2>H2 Heading</h2>

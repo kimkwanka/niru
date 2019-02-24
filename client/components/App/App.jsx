@@ -10,18 +10,13 @@ import Footer from './Footer/Footer';
 
 const App = () => (
   <div className="App">
-    <Helmet
-      htmlAttributes={{ lang: 'en' }}
-      titleTemplate="niru | %s"
-      titleAttributes={{ itemprop: 'name', lang: 'en' }}
-      meta={[
-        { name: 'description', content: 'Universal fullstack boilerplate' },
-      ]}
-    />
+    <Helmet titleTemplate="niru | %s">
+      <html lang="en" />
+      <title itemProp="name" lang="en" />
+      <meta name="description" content="Universal fullstack boilerplate" />
+    </Helmet>
     <Header />
-    <main className="page-content relative overflow-hidden">
-      {renderRoutes(routes)}
-    </main>
+    <main className="page-content relative overflow-hidden">{renderRoutes(routes)}</main>
     <Footer />
   </div>
 );

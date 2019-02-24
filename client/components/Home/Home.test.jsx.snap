@@ -7,8 +7,11 @@ exports[`<Home /> - Snapshot matches its snapshot 1`] = `
   <HelmetWrapper
     defer={true}
     encodeSpecialCharacters={true}
-    title="Home"
-  />
+  >
+    <title>
+      Home
+    </title>
+  </HelmetWrapper>
   <h1>
     Home
   </h1>

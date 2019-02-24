@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-
 module.exports = {
   module: {
     rules: [
@@ -26,9 +24,6 @@ module.exports = {
     ],
   },
   stats: 'minimal',
-  plugins: [
-    new webpack.HashedModuleIdsPlugin(),
-  ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
