@@ -36,8 +36,8 @@ module.exports = merge(common, {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              // Apply 1 loaders before css-loader (postcss-loader) to all @imports instead of 0.
-              // Without it, cssnano for example doesn't get applied to the normalize.css portion
+              // Apply 1 loader before css-loader (postcss-loader) to all @imports instead of 0.
+              // Without it, cssnano doesn't get applied to the normalize.css portion
             },
           },
           'postcss-loader',
