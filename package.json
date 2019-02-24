@@ -10,16 +10,16 @@
     "release:dry": "standard-version --dry-run",
     "release": "standard-version",
     "lint": "eslint client server --ext .js,.jsx",
-    "test": "jest --coverage",
-    "test:watch": "jest --watchAll",
+    "clean": "rimraf dist",
+    "test": "run-s clean && jest --coverage",
+    "test:watch": "run-s clean && jest --watchAll",
     "start": "run-s build serve",
-    "build": "run-s build:clean && run-p build:server build:ssr build:client",
-    "build:clean": "rimraf dist",
+    "build": "run-s clean && run-p build:server build:ssr build:client",
     "build:client": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "build:ssr": "cross-env NODE_ENV=production webpack --config webpack.ssr.js",
     "build:server": "babel server -d dist",
     "serve": "cross-env NODE_ENV=production nodemon dist/server.js",
-    "dev": "run-s build:clean && webpack --config webpack.ssr.js --watch"
+    "dev": "run-s clean && webpack --config webpack.ssr.js --watch"
   },
   "nodemonConfig": {
     "watch": [
