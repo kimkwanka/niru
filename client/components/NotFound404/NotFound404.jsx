@@ -9,7 +9,9 @@ const NotFound404 = ({ staticContext }) => {
 
   return (
     <div className="container margin-top-small">
-      <Helmet title="Not Found" />
+      <Helmet>
+        <title>Not Found</title>
+      </Helmet>
       <h1>404</h1>
       <p>Oops! Nothing here :(</p>
     </div>
