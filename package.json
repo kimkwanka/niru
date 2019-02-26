@@ -16,9 +16,9 @@
     "start": "run-s build serve",
     "build": "run-s clean && run-p build:server build:client",
     "build:client": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
-    "build:server": "cross-env NODE_ENV=production webpack --config webpack.ssr.js",
+    "build:server": "cross-env NODE_ENV=production webpack --config webpack.server.js",
     "serve": "cross-env NODE_ENV=production nodemon dist/server.js",
-    "dev": "run-s clean && webpack --config webpack.ssr.js --watch"
+    "dev": "run-s clean && webpack --config webpack.server.js --watch"
   },
   "nodemonConfig": {
     "watch": [
