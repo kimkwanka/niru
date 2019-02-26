@@ -6,7 +6,7 @@ import path from 'path';
 import api from './api';
 
 // eslint-disable-next-line import/no-unresolved
-import SSR from '../dist/ssr'; // Dynamically built from ./serverSideRendering.jsx
+const SSR = process.env.NODE_ENV !== 'production' ? require('../dist/ssr').default : require('./serverSideRendering').default;
 
 const isDev = process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test';
 
@@ -39,7 +39,7 @@ if (isDev) {
 app.use(express.static(path.resolve(__dirname, '../public')));
 
 // Serve static assets from the build folder (webpack bundles)
-app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use(express.static(path.resolve(__dirname, '../dist/assets')));
 
 // Example api route
 app.get('/api', api);

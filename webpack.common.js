@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   module: {
     rules: [
@@ -28,7 +30,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   output: {
-    publicPath: '/',
+    path: path.resolve(__dirname, 'dist/assets'),
   },
   optimization: {
     runtimeChunk: 'single',

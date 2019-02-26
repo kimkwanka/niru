@@ -14,12 +14,11 @@
     "test": "run-s clean && jest --coverage",
     "test:watch": "run-s clean && jest --watchAll",
     "start": "run-s build serve",
-    "build": "run-s clean && run-p build:server build:ssr build:client",
+    "build": "run-s clean && run-p build:server build:client",
     "build:client": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
-    "build:ssr": "cross-env NODE_ENV=production webpack --config webpack.ssr.js",
-    "build:server": "babel server -d dist",
+    "build:server": "cross-env NODE_ENV=production webpack --config webpack.server.js",
     "serve": "cross-env NODE_ENV=production nodemon dist/server.js",
-    "dev": "run-s clean && webpack --config webpack.ssr.js --watch"
+    "dev": "run-s clean && webpack --config webpack.server.js --watch"
   },
   "nodemonConfig": {
     "watch": [
@@ -56,8 +55,8 @@
   },
   "dependencies": {
     "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.3",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "assets-webpack-plugin": "^3.9.7",
     "autoprefixer": "^9.4.9",

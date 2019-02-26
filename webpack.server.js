@@ -37,13 +37,18 @@ const common = {
       Client: path.resolve(__dirname, 'client'),
     },
   },
-  output: {
-    publicPath: '/',
-    filename: 'ssr.js',
-    libraryTarget: 'umd',
-    library: 'ssr',
-  },
 };
+
+// In development mode we don't bundle up the whole express server
+// but ONLY the SSR module to enable HMR for the React parts.
+
+// Even though it is possible to use HMR on the whole server it leads to a lot
+// of complications in my experience. (Especially when dealing with Sockets or express middleware
+// that just won't work correctly with HMR)
+
+// Therefore we leverage nodemon's auto restarts for the non-React parts instead.
+
+// In production though, we can just bundle up the whole server.
 
 module.exports = isDev
   ? merge(common, {
@@ -57,8 +62,17 @@ module.exports = isDev
         },
       }),
     ],
+    // Note that we have to create a library bundle, since ./serverSideRendering is not executable
+    output: {
+      filename: 'ssr.js',
+      libraryTarget: 'umd',
+      library: 'ssr',
+    },
   })
   : merge(common, {
     mode: 'production',
-    entry: './server/serverSideRendering.jsx',
+    entry: './server/server.js',
+    output: {
+      filename: 'server.js',
+    },
   });
