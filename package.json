@@ -14,10 +14,9 @@
     "test": "run-s clean && jest --coverage",
     "test:watch": "run-s clean && jest --watchAll",
     "start": "run-s build serve",
-    "build": "run-s clean && run-p build:server build:ssr build:client",
+    "build": "run-s clean && run-p build:server build:client",
     "build:client": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
-    "build:ssr": "cross-env NODE_ENV=production webpack --config webpack.ssr.js",
-    "build:server": "babel server -d dist",
+    "build:server": "cross-env NODE_ENV=production webpack --config webpack.ssr.js",
     "serve": "cross-env NODE_ENV=production nodemon dist/server.js",
     "dev": "run-s clean && webpack --config webpack.ssr.js --watch"
   },
