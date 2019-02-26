@@ -39,7 +39,7 @@ if (isDev) {
 app.use(express.static(path.resolve(__dirname, '../public')));
 
 // Serve static assets from the build folder (webpack bundles)
-app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use(express.static(path.resolve(__dirname, '../dist/assets')));
 
 // Example api route
 app.get('/api', api);
