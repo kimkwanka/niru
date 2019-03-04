@@ -79,7 +79,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-helmet": "^5.2.0",
-    "react-hot-loader": "^4.7.1",
+    "react-hot-loader": "^4.7.2",
     "react-redux": "^6.0.1",
     "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1",
