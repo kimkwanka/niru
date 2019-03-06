@@ -48,7 +48,7 @@
     "reload": "^2.4.0",
     "standard-version": "^5.0.1",
     "supertest": "^3.4.2",
-    "webpack-dev-middleware": "^3.6.0",
+    "webpack-dev-middleware": "^3.6.1",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-node-externals": "^1.7.2",
     "webpack-shell-plugin-next": "^0.6.4"
