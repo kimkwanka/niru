@@ -15,7 +15,6 @@ exports[`<Header /> - Snapshot matches its snapshot 1`] = `
         <li>
           <NavLink
             activeClassName="navItemActive"
-            aria-current="page"
             exact={true}
             to="/"
           >
@@ -25,7 +24,6 @@ exports[`<Header /> - Snapshot matches its snapshot 1`] = `
         <li>
           <NavLink
             activeClassName="navItemActive"
-            aria-current="page"
             to="/about"
           >
             About
@@ -34,7 +32,6 @@ exports[`<Header /> - Snapshot matches its snapshot 1`] = `
         <li>
           <NavLink
             activeClassName="navItemActive"
-            aria-current="page"
             to="/styleguide"
           >
             Styleguide

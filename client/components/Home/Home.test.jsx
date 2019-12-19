@@ -14,22 +14,22 @@ const dispatch = () => {};
 
 describe('<Home /> - Snapshot', () => {
   it('matches its snapshot', () => {
-    const wrapper = shallow(<Home {...{ user, dispatch }} />);
+    const wrapper = shallow(<Home user={user} dispatch={dispatch} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
 
 describe('<Home /> - Shallow render undecorated component', () => {
   it('renders without exploding', () => {
-    const wrapper = shallow(<Home {...{ user, dispatch }} />);
+    const wrapper = shallow(<Home user={user} dispatch={dispatch} />);
     expect(wrapper).toHaveLength(1);
   });
   it('renders the user name', () => {
-    const wrapper = shallow(<Home {...{ user, dispatch }} />);
+    const wrapper = shallow(<Home user={user} dispatch={dispatch} />);
     expect(wrapper.find('h4 span').at(0).text()).toBe(' TestUsername');
   });
   it('renders the user authentication status: true', () => {
-    const wrapper = shallow(<Home {...{ user, dispatch }} />);
+    const wrapper = shallow(<Home user={user} dispatch={dispatch} />);
     expect(wrapper.find('h4 span').at(1).text()).toBe(' true');
   });
   it('renders the user authentication status: false', () => {
