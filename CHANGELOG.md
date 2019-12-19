@@ -1,6 +1,14 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [2.5.1](https://github.com/kimkwanka/niru/compare/v2.5.0...v2.5.1) (2019-12-19)
+
+
+### Bug Fixes
+
+* **deps:** fix package-lock.json ([e855105](https://github.com/kimkwanka/niru/commit/e855105cdbf2928fa5a8480a92026b60fe612f6a))
+* **test:** update snapshot and stop using prop spreading(eslint error) ([e084358](https://github.com/kimkwanka/niru/commit/e084358cc49a35305c7bb156492c0a86286d15f7))
 
 # [2.5.0](https://github.com/kimkwanka/niru/compare/v2.4.2...v2.5.0) (2019-02-26)
 
