@@ -50,6 +50,6 @@ Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-export default connect(state => ({
+export default connect((state) => ({
   user: state.user,
 }))(Home);
