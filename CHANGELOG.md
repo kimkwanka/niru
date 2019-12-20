@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.2](https://github.com/kimkwanka/niru/compare/v2.5.1...v2.5.2) (2019-12-20)
+
+
+### Bug Fixes
+
+* **deps:** upgrade packages to latest to fix vulnerabilities (snyk test) ([8bf3ed0](https://github.com/kimkwanka/niru/commit/8bf3ed0255d8f931f34d74b7b3061b4ed4f22986))
+
 ### [2.5.1](https://github.com/kimkwanka/niru/compare/v2.5.0...v2.5.1) (2019-12-19)
 
 
