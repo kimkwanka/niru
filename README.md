@@ -181,7 +181,7 @@ After that it's only a matter of
 ```
 git push --follow-tags origin master
 ```
-to finalize publishing process.
+to finalize the publishing process.
 ### More information
 Check out [standard-version](https://github.com/conventional-changelog/standard-version)'s github page for more indepth information on CLI usage, etc.
 ## How to use niru
@@ -251,7 +251,7 @@ If you don't want to use sutairu just remove its import in ```style.styl``` by c
 @import './sutairu'
 ```
 ### Atomiku
-Atomiku is my functional CSS mini framework which gives you small css "modifiers" that you can directly apply to your components to make speed up app development.
+Atomiku is my functional CSS mini framework which gives you small css "modifiers" that you can directly apply to your components to speed up app development.
 The idea is instead of writing the same CSS over and over again for 1000 different classes you only write it once and then compose.
 An example of such usage can be seen in ```Home.jsx``` where the ```<div>``` is defined like this:
 ```
