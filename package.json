@@ -18,7 +18,9 @@
     "build:client": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "build:server": "cross-env NODE_ENV=production webpack --config webpack.server.js",
     "serve": "cross-env NODE_ENV=production nodemon dist/server.js",
-    "dev": "run-s clean && webpack --config webpack.server.js --watch"
+    "dev": "run-s clean && webpack --config webpack.server.js --watch",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "nodemonConfig": {
     "watch": [
@@ -90,6 +92,8 @@
     "stylus-loader": "^3.0.2",
     "webpack": "^4.41.4",
     "webpack-cli": "^3.3.10",
-    "webpack-merge": "^4.2.2"
-  }
+    "webpack-merge": "^4.2.2",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
