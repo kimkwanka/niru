@@ -46,7 +46,7 @@
     "redux-logger": "^3.0.6",
     "redux-mock-store": "^1.5.4",
     "reload": "^3.0.3",
-    "standard-version": "^7.0.1",
+    "standard-version": "^8.0.1",
     "supertest": "^4.0.2",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0",
