@@ -1,6 +1,6 @@
 {
   "name": "niru",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "description": "Universal / isomorphic fullstack boilerplate",
   "main": "server/server.js",
   "repository": "git@github.com:kimkwanka/niru.git",
@@ -78,7 +78,7 @@
     "purgecss-webpack-plugin": "^1.6.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
+    "react-helmet": "^6.1.0",
     "react-hot-loader": "^4.12.18",
     "react-redux": "^7.1.3",
     "react-router-config": "^5.1.1",
