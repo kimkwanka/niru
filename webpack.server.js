@@ -1,7 +1,7 @@
 const isDev = process.env.NODE_ENV !== 'production' && process.argv.indexOf('-p') === -1;
 
 const webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 
 const nodeExternals = require('webpack-node-externals');
 const WebpackShellPlugin = require('webpack-shell-plugin-next');
@@ -17,7 +17,7 @@ const common = {
   stats: 'minimal',
   externals: [
     nodeExternals({
-      whitelist: ['webpack/hot/poll?1000'],
+      allowlist: ['webpack/hot/poll?1000'],
     }),
   ],
   module: {
