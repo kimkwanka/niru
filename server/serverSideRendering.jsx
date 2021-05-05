@@ -72,6 +72,27 @@ const renderPage = (url, store, routerContext) => {
       <meta charset="utf-8">
       <meta content="IE=Edge" http-equiv="X-UA-Compatible">
       <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+      <link rel="icon" href="data:image/vnd.microsoft.icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAD///8B////XeTZ+77VwvnC8uz9lv///zj///8s+PX+kNfF+b/j
+      1/u6+vn+T////wEAAAAAAAAAAAAAAAAAAAAA////Hunf/MpjHun/Yx7p/2Me6f/czPng49j64WMe
+      6f9jHun/Yx7p/+LW+8j///8EAAAAAAAAAAAAAAAAAAAAAP///zpjHun/0bz4///////r4vz/n3Xx
+      /4pX7v/y7Pz//////8Oo9v9jHun/+PX9BQAAAAAAAAAAAAAAAAAAAAD///87Yx7p/9G9+P/6+P7/
+      28z6/6aA8v+UZu//39L6//v5/v/Fq/b/Yx7p//bz/QYAAAAAAAAAAP///wP///8+7ub8pbOS9PKS
+      Y+//s5H0/5ls8P9jHun/Yx7p/5dp8P+vjPP/lmfv/76i9fb18P2N////Nf///wH9/P5G28v55GMe
+      6f/Mtvf/hE3t/7+j9f/BpfX/39H6/+LW+//Zyfn/mW3w/7KQ8/+7nfX/Yx7p/9fG+dr///9Z8uz9
+      0mMe6f/r4vz//////7aW9P9jHun/1MH5/2Me6f9jHun/5Nj6/2Me6f+2lvT//Pr+//r4/v9jHun/
+      5dr7t/Pt/cljHun/5Nj7//38//+5mvT/Yx7p/9G9+P9jHun/Yx7p/9/R+v9jHun/vJ/1//r4/v/n
+      3fv/Yx7p/+DU+7L49f5D2cn5z2Me6f+5mvT/g03t/7OS8/+/o/X/28z5/9rK+f/TwPj/mm7w/6N7
+      8f+ui/P/Yx7p/9TA+db8+v9O////Avj1/SXu5/yGy7X375hr7/+wjfP/ilfu/2Me6f9jHun/hU/t
+      /6yJ8/+fdPH/0r/39e3l/ID9+/8g////BAAAAAAAAAAA////NWMe6f/Svvj//////93P+v+wjvP/
+      kmLv/+nf+///////wqj2/2Me6f/6+f0FAAAAAAAAAAAAAAAAAAAAAP///zljHun/y7X3//z6/v/h
+      1Pr/poDy/6J58f/h0/v//Pv+/8Gm9v9jHun/+vj9BgAAAAAAAAAAAAAAAAAAAAD///8a6d/8y2Me
+      6f9jHun/Yx7p/9jH+cbWxPnQYx7p/2Me6f9jHun/5937yv7+/gQAAAAAAAAAAAAAAAAAAAAA////
+      Av79/0rw6f3V7+f82/Hq/YH6+P4i////F/Hr/Xzu5vzY8u39z/n3/kT///8BAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAA//8AAPGPAADgBwAA4AcAAOAHAADAAwAAgAEAAAAAAAAAAAAAgAEAAMADAADgBwAA4AcAAOAH
+      AADxzwAA//8AAA==">
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
       ${helmet.link.toString()}
