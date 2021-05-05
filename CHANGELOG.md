@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.3](https://github.com/kimkwanka/niru/compare/v2.5.2...v2.5.3) (2021-05-05)
+
+
+### Bug Fixes
+
+* upgrade react-helmet to latest to get rid of componentWillMount warnings ([dddcdf8](https://github.com/kimkwanka/niru/commit/dddcdf88fd7a1bcae2a80b881aa20e654bdee028))
+* **deps:** upgrade dependencies to fix vulnerabilities (snyk test) ([355acf2](https://github.com/kimkwanka/niru/commit/355acf2a56e68efa0d517bbf0879fb3f6f2adf3f))
+* **test:** update snapshot ([f14da5f](https://github.com/kimkwanka/niru/commit/f14da5f9b439427dd1f1e2a386aa5f2bff41d667))
+
 ### [2.5.2](https://github.com/kimkwanka/niru/compare/v2.5.1...v2.5.2) (2019-12-20)
 
 
