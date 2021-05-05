@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.4](https://github.com/kimkwanka/niru/compare/v2.5.3...v2.5.4) (2021-05-05)
+
+
+### Bug Fixes
+
+* **deps:** upgrade dependencies to latest version ([db9ce7b](https://github.com/kimkwanka/niru/commit/db9ce7bc3974fddf1a82536c6c4e6b257ca13713))
+* **test:** replace enzyme adapter with React 17 compatible version ([bb0e2d9](https://github.com/kimkwanka/niru/commit/bb0e2d9d75878739f1d506595a2cbd2b07d60941))
+
 ### [2.5.3](https://github.com/kimkwanka/niru/compare/v2.5.2...v2.5.3) (2021-05-05)
 
 

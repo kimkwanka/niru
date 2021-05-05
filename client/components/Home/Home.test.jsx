@@ -51,11 +51,13 @@ describe('<Home /> - Mount Redux connected component', () => {
 
   beforeEach(() => {
     store = mockStore(initialState);
+    console.log('before')
     wrapper = mount(
       <Provider store={store}>
         <ConnectedHome />
       </Provider>,
     );
+    console.log('after')
   });
 
   it('renders without exploding', () => {
