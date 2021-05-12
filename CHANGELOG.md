@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.1](https://github.com/kimkwanka/niru/compare/v2.6.0...v2.6.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* **webpack:** import new webpack-merge correctly ([9e9a73f](https://github.com/kimkwanka/niru/commit/9e9a73f9f03cdf90de7ccd6dbed3c9bfa782d806))
+
 ## [2.6.0](https://github.com/kimkwanka/niru/compare/v2.5.4...v2.6.0) (2021-05-05)
 
 

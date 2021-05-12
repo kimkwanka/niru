@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 
 const path = require('path');
 const glob = require('glob');
@@ -47,7 +47,6 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    new webpack.HashedModuleIdsPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
